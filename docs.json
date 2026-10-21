@@ -16,6 +16,16 @@
           "index",
           "quickstart"
         ]
+      },
+      {
+        "group": "Missões",
+        "pages": [
+          "missoes/iniciar-missao",
+          "missoes/missao-ativa",
+          "missoes/editar-missao",
+          "missoes/cancelar-missao",
+          "missoes/missoes-anteriores"
+        ]
       }
     ],
     "global": {

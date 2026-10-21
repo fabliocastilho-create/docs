@@ -1,0 +1,54 @@
+---
+title: "Editar missão e aplicar OFRAG"
+description: "Corrija os dados de uma missão ativa e aplique ordens de alteração (OFRAG) às cotas."
+---
+
+Use **Editar Missão** para corrigir os dados de uma missão ativa ou aplicar uma OFRAG. O formulário de edição tem os mesmos campos de [Iniciar missão](/missoes/iniciar-missao).
+
+## OMA e OFRAG
+
+- A **OMA** (Ordem de Missão) é a ordem principal de referência da missão. Ela define a cota principal e as horas distribuídas.
+- A **OFRAG** registra uma alteração vinculada à OMA. Ela pode alterar as horas de uma cota, o local ou as datas da missão.
+
+As referências das ordens associadas a cada cota aparecem na seção **Disponibilidade** da página inicial.
+
+## Editar os dados da missão
+
+<Steps>
+  <Step title="Abrir a edição">
+    Selecione a missão ativa e abra a Mensagem de Posição. Toque em **Editar missão**.
+  </Step>
+  <Step title="Alterar os campos">
+    Corrija os campos necessários.
+  </Step>
+  <Step title="Salvar">
+    Toque em **Salvar Alterações**. Para descartar as mudanças, toque em **Cancelar Alterações**.
+  </Step>
+</Steps>
+
+## Aplicar uma OFRAG
+
+<Steps>
+  <Step title="Abrir a relação de alterações">
+    Na tela **Editar Missão**, em **Dados Gerais**, toque em **Adicionar Alteração**. O aplicativo exibe as ordens de alteração disponíveis para a missão, a partir da relação mantida no Google Planilhas.
+  </Step>
+  <Step title="Pesquisar">
+    Use **Pesquisar alteração** para filtrar a lista. Cada item mostra a cota afetada, as horas e a parte P1/P2.
+  </Step>
+  <Step title="Selecionar">
+    Toque em **Selecionar**. O aplicativo aplica a OFRAG à missão e atualiza as cotas, as horas distribuídas e a parte P1/P2 no formulário.
+  </Step>
+  <Step title="Salvar">
+    Confira os valores atualizados e toque em **Salvar Alterações**.
+  </Step>
+</Steps>
+
+Uma OFRAG já aplicada nesta ou em outra missão aparece como **Já utilizada** e não pode ser selecionada novamente.
+
+<Warning>
+  Se o aplicativo informar que a OFRAG foi processada, mas as cotas não foram sincronizadas, reabra a edição da missão antes de salvar.
+</Warning>
+
+<Note>
+  A reversão e a substituição de ordens ainda estão em desenvolvimento. Antes de aplicar uma OFRAG, confira as referências e os efeitos sobre as cotas.
+</Note>
