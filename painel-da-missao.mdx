@@ -1,0 +1,112 @@
+---
+title: "Painel da missão"
+description: "Acompanhe horas de voo, cotas, combustível e a posição das missões no MSG POS AVEX"
+---
+
+A página inicial do MSG POS AVEX mostra o painel da sua missão ativa. Use o painel para acompanhar as horas empregadas, o saldo das cotas e o combustível acumulado antes de emitir uma nova Mensagem de Posição (Msg Pos).
+
+## Selecionar a missão ativa
+
+Se você tiver mais de uma missão ativa, a página inicial exibe o quadro **Missões Ativas**. Toque na missão que deseja acompanhar. A missão escolhida recebe o selo **Selecionada** e o painel passa a mostrar os dados dela.
+
+O cabeçalho do quadro **Missão Ativa** mostra:
+
+- Nome da operação e OMAvEx.
+- Matrícula da aeronave (por exemplo, `EXB-1234`) e a imagem do modelo.
+- Local da missão e órgão apoiado.
+
+Toque em qualquer parte do quadro ou no botão **Mensagem de Posição** para abrir o formulário da Msg Pos.
+
+## Empregado
+
+A área **Empregado** resume o que a missão já consumiu. Os valores somam todas as Msg Pos registradas na missão.
+
+| Indicador | O que mostra |
+| --- | --- |
+| **HV – P1** | Total de horas de voo P1 (partida ao corte) registradas. |
+| **HV – P2** | Total de horas de voo P2 (voo) registradas. |
+| **Pot Mnt** | Potencial de manutenção restante. O MSG POS AVEX subtrai as horas P2 do potencial informado na abertura da missão. O valor aparece em vermelho quando fica negativo. |
+| **Dias em Missão** | Dias corridos entre a primeira Msg Pos e a Msg Pos final, contando os dois dias. Enquanto a missão estiver em andamento, a contagem vai até hoje. |
+
+## Disponibilidade
+
+A área **Disponibilidade** mostra quantas horas ainda restam para a missão. O **Saldo total** no topo da área soma o saldo de todas as cotas.
+
+### Missão com cota única
+
+Quando a missão tem uma única cota, o painel exibe dois cartões, **P1** e **P2**. Cada cartão mostra:
+
+- O saldo: horas distribuídas menos horas empregadas daquele tipo.
+- **Empregado**: horas já registradas daquele tipo.
+
+O cartão do tipo de hora definido como cota da missão aparece destacado com o selo **Principal**.
+
+### Missão com várias cotas
+
+Quando a missão tem mais de uma cota, o painel exibe um cartão por cota. Cada cartão mostra:
+
+| Campo | O que mostra |
+| --- | --- |
+| Nome e tipo | Nome da cota e o tipo de hora debitado (`P1` ou `P2`). |
+| **Ordem** | Cadeia de ordens vinculadas à cota, como a referência da OMA e as OFRAG que incluíram ou alteraram a cota. |
+| **Saldo** | Horas distribuídas menos horas empregadas na cota. |
+| **Distr** | Horas distribuídas para a cota. |
+| **Empr** | Horas empregadas na cota. |
+
+O MSG POS AVEX debita as horas de cada Msg Pos na cota indicada na própria mensagem. Mensagens sem cota indicada são debitadas na cota principal. A Msg Pos final não entra no cálculo por cota.
+
+### Saldo negativo
+
+Quando as horas empregadas superam as horas distribuídas, o saldo fica negativo e aparece em vermelho. Isso vale para o **Saldo total**, para os cartões P1 e P2 e para cada cota. Use esse alerta para solicitar mais horas antes de continuar a missão.
+
+## Combustível acumulado
+
+A área **Combustível acumulado** soma, em litros, todo o combustível registrado nas Msg Pos da missão. O total aparece ao lado do título. Abaixo, o painel separa o volume por fornecedor:
+
+- **BR**
+- **TASA**
+- **Outros**
+
+O painel só lista os fornecedores com volume maior que zero. Se a missão ainda não tiver abastecimentos, aparece a mensagem **Nenhum abastecimento registrado**.
+
+## Mapa de missões
+
+Gestores com acesso a **Gestão de Missões** veem o **Mapa de Missões**. O mapa usa OpenStreetMap e mostra a última posição informada nas Msg Pos de cada missão.
+
+Toque em **Legenda** no canto do mapa para ver o significado de cada marcador.
+
+| Grupo | Marcador |
+| --- | --- |
+| Missões | **Missão em Andamento** (com o brasão da OMAvEx), **Missão Aberta**, **Missão Encerrada** e **Missão Cancelada**. |
+| Locais de pernoite | **Pernoite ANV** (aeronave), **Pernoite TRIP** (tripulação) e **Pernoite ANV + TRIP** quando as duas estão no mesmo local. |
+
+- Missões abertas sem Msg Pos e missões canceladas aparecem na sede da OMAvEx.
+- Um marcador com indicação vermelha significa **Posição não informada**. Nesse caso, o local não foi informado na Msg Pos.
+- Missões muito próximas são agrupadas em um círculo com a quantidade. Toque no círculo para aproximar o mapa.
+- Toque em um marcador para abrir a missão.
+
+Abaixo do mapa, a lista **Missões localizadas** repete as missões com matrícula, operação, órgão apoiado e local. A lista permite navegar pelo teclado e por leitores de tela.
+
+## Selecionar um local no mapa
+
+No formulário da Msg Pos, você pode marcar no mapa o local da missão e os locais de pernoite (aeronave, tripulação ou ambos).
+
+<Steps>
+  <Step title="Abra o mapa">
+    Toque em **Selecionar local no mapa** abaixo do campo de local.
+  </Step>
+  <Step title="Marque a posição">
+    Toque no mapa ou arraste o pin até a posição desejada. Se você já informou a cidade, o pin começa no centro dela com o aviso **Localização aproximada**.
+  </Step>
+  <Step title="Confira as coordenadas">
+    Após marcar, o aviso muda para **Localização confirmada** e as coordenadas aparecem abaixo do mapa. Toque no **X** ao lado delas para remover a localização.
+  </Step>
+</Steps>
+
+<Note>
+  A posição sugerida a partir da cidade só é salva depois que você toca no mapa ou move o pin.
+</Note>
+
+- Se você alterar o texto do local depois de marcar o pin, aparece o aviso **Confira a localização**. As coordenadas anteriores são mantidas até você ajustar o pin.
+- O pin é opcional. Se você não marcar nenhum ponto, o MSG POS AVEX registra a localização automática do aparelho no momento da emissão da Msg Pos.
+- Se o mapa não carregar, verifique sua conexão e toque em **Tentar carregar novamente**.
