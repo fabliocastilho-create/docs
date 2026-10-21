@@ -16,6 +16,12 @@
           "index",
           "quickstart"
         ]
+      },
+      {
+        "group": "Missões",
+        "pages": [
+          "painel-da-missao"
+        ]
       }
     ],
     "global": {
