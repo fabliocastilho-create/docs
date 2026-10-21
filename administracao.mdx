@@ -1,0 +1,104 @@
+---
+title: "Administração"
+description: "Acompanhe missões e gerencie usuários e perfis de gestão conforme o seu perfil de acesso."
+---
+
+A área de administração reúne os recursos de gestão do aplicativo. Ela tem duas seções: **Gestão de Missões** e **Gestão de Pessoal**. As seções disponíveis dependem do seu perfil de acesso.
+
+## Pré-requisitos
+
+- Um perfil de gestão ativo: Gestor Local, Gestor CAvEx, Gestor Global ou Administrador Local.
+- Conexão com a internet. A administração não funciona offline. Sem conexão, o aplicativo exibe a mensagem "A administração requer conexão com a internet." e oferece o botão **Voltar**.
+
+## Perfis e acesso
+
+| Perfil | Gestão de Missões | Gestão de Pessoal | Escopo |
+| --- | --- | --- | --- |
+| Gestor Local | Sim | Não | A OMAvEx em que você é gestor |
+| Gestor CAvEx | Sim | Não | Todas as OMAvEx ou uma OMAvEx selecionada |
+| Gestor Global | Sim | Sim | Todas as OMAvEx, o CAvEx ou uma OMAvEx selecionada |
+| Administrador Local | Sim | Sim | A OMAvEx que você administra |
+
+Usuários sem perfil de gestão não veem os botões de administração.
+
+## Acessar a administração
+
+1. Na página inicial, toque em **Gestão de Missões** ou **Gestão de Pessoal**. Cada botão só aparece se o seu perfil tiver acesso à seção.
+2. Na tela **Selecione a área de gestão**, escolha a seção desejada. As opções seguem o seu perfil de acesso.
+3. Se você for Gestor Global ou Gestor CAvEx, defina o **Escopo da administração**. Selecione uma OMAvEx ou mantenha **Todas as OMAvEx**. O Gestor Global também pode selecionar **CAvEx**.
+
+## Gestão de Missões
+
+Use a Gestão de Missões para acompanhar as missões ativas, suas posições e a situação operacional dentro do seu escopo.
+
+### Acompanhar missões
+
+As missões aparecem agrupadas por situação:
+
+- **Iniciadas**: missões criadas que ainda não possuem Msg Pos.
+- **Em andamento**: missões ativas que já possuem Msg Pos.
+- **Encerradas**: missões que já foram encerradas.
+- **Canceladas**: missões que foram canceladas.
+
+O **Mapa de Missões** mostra os pins de todas as missões em andamento no escopo selecionado.
+
+### Consultar os detalhes de uma missão
+
+Toque em uma missão para abrir os detalhes. A tela mostra:
+
+- **Dados da missão**, como a aeronave e o Comandante da Missão Aérea.
+- **Disponibilidade por cota**, com o saldo de horas de voo de cada cota.
+- **Combustível acumulado**, com os volumes abastecidos registrados na missão.
+- **Mensagens de Posição**, com a lista de Msg Pos registradas. Toque em uma mensagem para ver o conteúdo completo.
+
+### Excluir uma missão
+
+O Gestor Global e o Administrador Local podem excluir missões de forma definitiva:
+
+1. Em **Gestão de Missões**, toque em **Excluir Missão**.
+2. Selecione a missão que deseja excluir e confirme.
+3. Para voltar ao acompanhamento, toque em **Voltar**.
+
+<Warning>
+  A exclusão é definitiva. Confira a missão selecionada antes de confirmar.
+</Warning>
+
+## Gestão de Pessoal
+
+Use a Gestão de Pessoal para manter os usuários autorizados e os perfis de gestão. Essa seção está disponível para o Gestor Global e o Administrador Local.
+
+### Estrutura de gestão
+
+A seção **Estrutura de Gestão** lista as permissões administrativas adicionais ao uso normal do aplicativo:
+
+- **Gestores Globais**: o aplicativo permite no máximo 3 Gestores Globais ao mesmo tempo. Quando você adiciona um novo Gestor Global, os atuais permanecem com a função.
+- **Gestores CAvEx**: gestores com acompanhamento das missões de todas as OMAvEx.
+- **Gestores Locais**: gestores de uma OMAvEx específica.
+
+### Definir ou remover um perfil de gestão
+
+1. Na lista **Usuários**, toque no usuário.
+2. Escolha a ação desejada, como definir o usuário como Gestor Local da OMAvEx, Gestor CAvEx ou Gestor Global, ou remover a função atual.
+3. Confirme a ação na mensagem exibida.
+
+### Atualizar a base de usuários
+
+Com uma OMAvEx selecionada no escopo, a seção **Base de Usuários** permite atualizar a lista de usuários autorizados:
+
+1. Confira a **Planilha ativa** da OMAvEx.
+2. Toque em **Selecionar planilha** e escolha o novo arquivo.
+3. Revise a **Prévia da atualização** e aplique a planilha.
+
+### Histórico administrativo
+
+O **Histórico Administrativo** registra as alterações de gestão, como definição e remoção de perfis e aplicação de planilhas de usuários.
+
+## Caixa de sugestões
+
+O Gestor Global recebe as sugestões enviadas pelos usuários:
+
+1. Na página inicial, toque no ícone de fone de ouvido.
+2. Selecione **Contatos e Sugestões**.
+3. Toque em **Caixa de sugestões**. O botão mostra a quantidade de sugestões não lidas.
+
+Os demais usuários usam a mesma tela para enviar sugestões em **Enviar uma sugestão** e para consultar os contatos dos gestores.
