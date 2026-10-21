@@ -1,0 +1,82 @@
+---
+title: "Relatório de missão"
+description: "Consulte o resumo de uma missão encerrada e gere ou compartilhe o relatório em PDF"
+---
+
+O relatório de missão consolida, em uma única tela, todas as Mensagens de Posição (Msg Pos) de uma missão encerrada. Ele apresenta as horas de voo por cota, os abastecimentos de QAV, as missões realizadas, os pernoites e os dados de manutenção da aeronave dia a dia. Use o relatório para conferir os totais da missão e para enviar o documento final em PDF.
+
+## Pré-requisitos
+
+- A missão precisa estar encerrada, com a Msg Pos FINAL registrada.
+- Missões canceladas não têm relatório de missão. Para elas, a consulta exibe o **Relatório de Cancelamento**, com OMA, data do cancelamento e motivo.
+
+## Como acessar o relatório
+
+<Steps>
+  <Step title="Abra as missões anteriores">
+    Na tela inicial, toque em **Missões Anteriores** (Consultar missões encerradas e relatórios).
+  </Step>
+  <Step title="Selecione a missão">
+    Na lista **Missões Anteriores / Canceladas**, toque na missão encerrada que você quer consultar.
+  </Step>
+  <Step title="Abra o relatório">
+    Toque em **Relatório da Missão**. O botão aparece somente quando a missão não está cancelada e já tem a Msg Pos FINAL.
+  </Step>
+</Steps>
+
+<Tip>
+  Ao encerrar uma missão pela Msg Pos FINAL, o aplicativo oferece o mesmo relatório logo após o encerramento. Você não precisa ir até a consulta de missões.
+</Tip>
+
+## Conteúdo do relatório
+
+### Cabeçalho
+
+O cabeçalho resume os dados gerais da missão:
+
+| Campo | Conteúdo |
+| --- | --- |
+| OMAvEx / ANV | OMAvEx e matrícula da aeronave (EXB-xxxx) |
+| Missão / período de execução | Nome da operação e datas de início e término |
+| Órgão apoiado / local | Órgão apoiado e local da missão |
+| Dias em missão / pernoites fora | Total de dias da missão e quantidade de pernoites fora da sede |
+| Cmt missão / contato | Comandante da missão aérea e telefone |
+| Tripulação | Trigramas dos tripulantes registrados nas Msg Pos |
+| Total HV | Horas de voo totais em P1 e P2 |
+| Total QAV | Litros totais de combustível, separados em BR, TASA e Outros quando houver |
+
+### Cotas
+
+A seção **Cotas — HV e ordens / alterações** lista cada cota de horas de voo da missão. Para cada cota, o relatório mostra as horas originais em P1 e P2. Quando a cota recebeu alterações (OFRAG), o relatório mostra também o valor atualizado e a ordem correspondente.
+
+### Tabela diária
+
+Cada linha da tabela corresponde a uma Msg Pos, em ordem cronológica. A linha da Msg Pos FINAL aparece destacada. As colunas são:
+
+- **Data**: data da Msg Pos.
+- **Horas de voo missão**: horas P1 e P2 do dia e acumuladas, com o detalhamento por cota, além da disponibilidade (**Dspn**) de horas restantes.
+- **QAV**: litros abastecidos no dia e acumulados, com a divisão entre BR, TASA e Outros, e a indicação de CEPA anexada.
+- **Missão**: missão realizada e pernoite do dia.
+- **Mnt**: TSN da célula e dos motores (GTM 1 e GTM 2) e o potencial de manutenção (**Pot**).
+- **Outras informações**: anexos informativos enviados na Msg Pos.
+
+No rodapé, o relatório identifica o comandante da missão aérea e o telefone de contato.
+
+## Exportar e compartilhar
+
+Na parte inferior do relatório, você tem duas opções:
+
+| Botão | O que faz |
+| --- | --- |
+| **Gerar PDF** | Gera o relatório em PDF e baixa o arquivo no dispositivo. |
+| **Compartilhar PDF** | Gera o PDF e abre o compartilhamento nativo do dispositivo para enviar o arquivo por outros aplicativos. |
+
+O arquivo recebe o nome `Relatorio_Missao_EXB-<número da aeronave>.pdf`. O PDF é gerado em orientação paisagem e reproduz o cabeçalho, as cotas e a tabela diária.
+
+Os anexos das Msg Pos (CEPA e outros anexos) entram em páginas adicionais no final do PDF. Nas colunas de CEPA e anexos da tabela, o PDF indica a página em que cada anexo aparece. Quando um anexo está em um formato que não pode ser incorporado visualmente, o PDF registra o nome do arquivo, a data e o vínculo com a Msg Pos.
+
+<Note>
+  Se o dispositivo não oferece compartilhamento direto de arquivos, **Compartilhar PDF** baixa o arquivo para que você o envie manualmente. O aplicativo exibe a mensagem "O compartilhamento direto não está disponível neste dispositivo. O PDF foi gerado para envio manual."
+</Note>
+
+O relatório não tem uma opção de impressão própria. Para imprimir, gere o PDF e imprima o arquivo pelo seu dispositivo.
