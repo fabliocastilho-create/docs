@@ -1,0 +1,44 @@
+---
+title: "Modo offline"
+description: "Saiba o que funciona sem internet no MSG POS AVEX e como as Msg Pos são sincronizadas."
+---
+
+O MSG POS AVEX continua funcionando quando o aparelho perde a conexão com a internet. O aplicativo salva os dados no próprio aparelho e envia tudo ao servidor quando a conexão volta.
+
+## Pré-requisitos
+
+- Faça login com internet pelo menos uma vez no aparelho.
+- Abra a página inicial com internet antes de perder a conexão. Assim o aplicativo guarda suas missões ativas no aparelho.
+
+## O que funciona sem internet
+
+- **Sessão**: se você já entrou no aparelho, o aplicativo mantém sua sessão usando os dados salvos localmente.
+- **Missões ativas**: a página inicial mostra as missões ativas salvas na última conexão. A missão que você tinha selecionado continua selecionada.
+- **Novas Msg Pos**: o aplicativo salva cada nova Mensagem de Posição no aparelho e exibe **Msg Pos salva neste aparelho. Ela será sincronizada automaticamente quando a internet voltar.**
+- **Edição de Msg Pos ainda não sincronizadas**: você pode corrigir uma Msg Pos que está salva apenas no aparelho.
+
+## O que exige internet
+
+- Primeiro login e primeiro acesso.
+- Edição de uma Msg Pos já sincronizada.
+- Encerramento e cancelamento de missão.
+- **Gestão de Missões** e **Gestão de Pessoal**. Sem internet, o aplicativo exibe **A administração requer conexão com a internet.**
+
+## Sincronização
+
+Na página de Mensagem de Posição, um aviso mostra o estado offline:
+
+- **Modo offline**: o aparelho está sem internet. Novas Msg Pos são salvas no aparelho.
+- **Sincronização pendente**: a internet voltou e ainda há Msg Pos salvas no aparelho. O aviso mostra quantas aguardam sincronização.
+
+Quando a conexão volta, o aplicativo sincroniza as Msg Pos pendentes automaticamente. Para forçar o envio, toque em **Sincronizar agora**. As Msg Pos ainda não enviadas aparecem com o indicador **Pendente de sincronização**.
+
+Se alguma Msg Pos não puder ser sincronizada, ela continua salva no aparelho. Tente novamente mais tarde.
+
+<Warning>
+  Ao sair do sistema, o aplicativo remove do aparelho os dados de usuário salvos para uso offline. Sincronize as Msg Pos pendentes antes de sair.
+</Warning>
+
+## Sessão expirada
+
+Se o aplicativo não conseguir validar sua sessão por um motivo diferente de falta de conexão, ele encerra a sessão e exibe **Sessão não validada. Entre novamente com internet.** Conecte-se e entre novamente.
