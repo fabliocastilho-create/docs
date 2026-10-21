@@ -1,0 +1,112 @@
+---
+title: "Mensagens de Posição"
+description: "Registre a Msg Pos diária da missão ativa com horas de voo P1/P2, abastecimentos, local e anexos CEPA, inclusive sem internet."
+---
+
+A Mensagem de Posição (Msg Pos) é o registro diário de uma missão ativa. Nela você informa a missão realizada no dia, as horas de voo P1 e P2, os abastecimentos, os locais e os anexos CEPA. O aplicativo gera o texto padronizado da Msg Pos para você copiar ou compartilhar.
+
+Use a Msg Pos uma vez por dia, do primeiro dia da missão até o encerramento.
+
+## Pré-requisitos
+
+- Uma missão ativa iniciada no aplicativo.
+- Conexão com a internet para editar uma Msg Pos já sincronizada. Novas Msg Pos podem ser salvas sem internet.
+
+## Abrir a Mensagem de Posição
+
+Na tela inicial, toque no cartão da missão ativa ou no botão **Mensagem de Posição**. A tela **Mensagem de Posição** lista as mensagens já registradas e mostra as ações disponíveis:
+
+- **Nova Mensagem de Posição**: abre o formulário para a próxima data.
+- **Preencher próxima pendente**: aparece quando existem dias anteriores sem Msg Pos.
+- **Visualizar** e **Editar**: abrem uma mensagem já salva.
+
+<Note>
+  As Msg Pos seguem a sequência de datas da missão. Se existir um dia anterior sem mensagem, o aplicativo exige que você preencha primeiro a data pendente mais antiga. Não é possível criar Msg Pos para data futura nem para data anterior ao início da missão.
+</Note>
+
+## Preencher o formulário
+
+<Steps>
+  <Step title="Data e missão realizada">
+    O campo **Data** já vem preenchido com a próxima data da sequência. Quando a data é definida pela continuidade, o campo fica bloqueado.
+
+    Em **Missão Realizada no Dia**, descreva a missão executada. Ative **Sem atividade aérea** se não houve voo. O aplicativo preenche a missão como "Sem atividade aérea" e zera as horas de voo.
+  </Step>
+  <Step title="Horas de voo P1 e P2">
+    Em **Horas de Voo**, informe **P1** e **P2** em horas decimais com uma casa (por exemplo, `2.5`). Os dois campos são obrigatórios. P2 não pode ser maior que P1.
+
+    Quando a missão tem mais de uma cota ativa na data, o formulário mostra um par P1/P2 para cada cota. O aplicativo soma os valores em **Total Geral da Aeronave**.
+  </Step>
+  <Step title="Abastecimentos">
+    Em **Abastecimento**, informe a quantidade abastecida nos campos **BR** e **Outros**. Cada campo aceita apenas números inteiros com até 5 dígitos. Campos vazios contam como zero.
+
+    Ative **Sem abastecimento** se não houve abastecimento no dia. Se você tentar gerar a Msg Pos sem nenhum abastecimento e sem ativar essa opção, o aplicativo pede para você confirmar a ausência de abastecimento.
+  </Step>
+  <Step title="Anexo CEPA">
+    Abaixo de cada campo de abastecimento, anexe a foto da CEPA correspondente. Você pode tirar a foto com a câmera ou escolher uma imagem do aparelho. As CEPAs são anexadas ao Relatório Final de Missão.
+
+    Use **Arquivos / Fotos** para anexar outros arquivos. Todo arquivo anexado é informado na Msg Pos da data e incluído no relatório final.
+  </Step>
+  <Step title="Locais">
+    Em **Local da Missão**, informe o local e, se quiser, marque a posição no mapa. Ative **Mesmo do dia anterior** para reaproveitar o local da mensagem anterior. Na primeira mensagem, a opção aparece como **Mesma localização da OMA**.
+
+    Em **Local de Pernoite**, informe o pernoite de aeronave e tripulação (**Anv e Trip**) juntos ou separadamente.
+  </Step>
+  <Step title="Missão do dia seguinte e outras informações">
+    Preencha **Missão do Dia Seguinte**, que é obrigatória. **Outras Informações** é opcional.
+  </Step>
+</Steps>
+
+Toque em **Gerar Msg Pos** para salvar. Se algum campo estiver inválido, o aplicativo mostra **Corrija os dados da Msg Pos** com a lista de problemas. Toque em **Corrigir campos** para ir até o primeiro campo inválido.
+
+<Tip>
+  Em dias sem operação após a primeira mensagem, use **DAY OFF**. O aplicativo mantém os locais da mensagem anterior e bloqueia os campos de atividade aérea e abastecimento.
+</Tip>
+
+### Regras de validação
+
+| Campo | Regra |
+| --- | --- |
+| Data | Obrigatória |
+| Missão Realizada no Dia | Obrigatória |
+| P1 | Obrigatório. Decimal com até uma casa, por exemplo `2.5` |
+| P2 | Obrigatório. Decimal com até uma casa e não maior que P1 |
+| BR / Outros | Opcional. Apenas números, até 5 dígitos |
+| Local da Missão | Obrigatório |
+| Missão do Dia Seguinte | Obrigatória, exceto na Msg Pos FINAL |
+| Local de Pernoite | Obrigatório (Anv e Trip juntos, ou cada um separadamente) |
+
+## Pré-visualizar e enviar
+
+Depois de salvar, o aplicativo abre a **Prévia da Mensagem de Posição** com o texto gerado e os **Anexos CEPA**. O texto inclui o resumo diário e o acumulado da missão. Por exemplo, o resumo diário de horas e abastecimento aparece assim:
+
+```text
+10. Resumo Diário:
+   b) Horas de Voo (P1: 2.5 / P2: 1.7)
+   c) QAV:
+       - BR: 800
+       - Outros: 300
+```
+
+Sem abastecimento no dia, a linha de QAV mostra `Sem abastecimento realizado`.
+
+Na prévia, envie a mensagem com uma destas opções:
+
+- **Copiar Mensagem**: copia o texto para a área de transferência.
+- **WhatsApp**: abre o WhatsApp com o texto da Msg Pos.
+- **Compartilhar**: usa o compartilhamento nativo do aparelho, quando disponível.
+- **Gerar PDF**: gera um PDF da mensagem.
+
+Você também pode **Editar** ou **Excluir** a mensagem pela prévia. Só é possível excluir a Msg Pos mais recente.
+
+## Envio offline e sincronização
+
+Sem internet, a tela mostra **Modo offline**. Ao tocar em **Gerar Msg Pos**, o aplicativo salva a mensagem no aparelho. A mensagem aparece na lista como **Pendente de sincronização**.
+
+Quando a internet volta, o aplicativo sincroniza as Msg Pos pendentes automaticamente. Enquanto houver mensagens aguardando, a tela mostra **Sincronização pendente** com a quantidade salva no aparelho. Toque em **Sincronizar agora** para forçar a sincronização.
+
+<Warning>
+  Para editar uma Msg Pos já sincronizada, conecte-se à internet. Mensagens ainda pendentes de sincronização podem ser editadas offline pelo botão **Editar** na lista.
+</Warning>
+
+Se alguma mensagem falhar na sincronização, ela continua salva no aparelho. Tente novamente com **Sincronizar agora**.
