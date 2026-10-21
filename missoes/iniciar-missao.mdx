@@ -1,0 +1,107 @@
+---
+title: "Iniciar missão"
+description: "Cadastre uma nova missão com aeronave, OMA, cotas de horas de voo e dados de manutenção."
+---
+
+Use **Iniciar Missão** para registrar uma nova missão. Depois do registro, a missão aparece em **Missão Ativa** na página inicial e passa a receber Mensagens de Posição.
+
+## Pré-requisitos
+
+- Você precisa estar conectado ao aplicativo com suas credenciais.
+- A aeronave não pode ter outra missão ativa. Se tiver, encerre ou cancele a missão atual antes de iniciar uma nova.
+- Tenha em mãos a OMA (Ordem de Missão), os dados de horas de voo distribuídas e os valores de TSN e potencial de manutenção da aeronave.
+
+## Cadastrar a missão
+
+<Steps>
+  <Step title="Abrir o formulário">
+    Na página inicial, toque em **Iniciar Missão**.
+  </Step>
+  <Step title="Buscar a ordem (opcional)">
+    Em **Dados Gerais**, toque em **Buscar Ordem** para consultar a relação de OMA. Pesquise por tipo, número, modelo, operação, órgão ou local e toque em **Selecionar**.
+
+    O aplicativo preenche automaticamente OMAvEx, operação, ordem de missão, local, HV distribuída e cota. Todos os campos continuam editáveis.
+
+    Ordens já vinculadas a outra aeronave aparecem como **Já selecionado** e não podem ser escolhidas.
+  </Step>
+  <Step title="Preencher os dados gerais">
+    Informe os campos descritos em [Campos do formulário](#campos-do-formulário).
+  </Step>
+  <Step title="Cadastrar a tripulação">
+    Em **Tripulação**, digite o trigrama do militar em **Adicionar Militar (Trigrama)** e confirme. Selecione a OMAvEx antes de adicionar militares, pois o aplicativo valida o trigrama na OMAvEx escolhida.
+  </Step>
+  <Step title="Preencher a manutenção">
+    Em **Manutenção**, informe **TSN Célula**, **TSN GTM** e **Potencial de Manutenção**.
+  </Step>
+  <Step title="Confirmar">
+    Toque em **Iniciar Missão**. Se algum campo estiver inválido, o aplicativo abre o resumo **Corrija os dados da missão**. Toque em **Corrigir campos** para ir até o primeiro campo com erro.
+  </Step>
+</Steps>
+
+<Tip>
+  Toque em **Apagar Dados** para limpar todo o formulário. O aplicativo pede confirmação antes de apagar.
+</Tip>
+
+## Campos do formulário
+
+### Dados gerais
+
+| Campo | Obrigatório | Descrição |
+| --- | --- | --- |
+| **Anv** | Sim | Número da aeronave, com até 4 dígitos (ex.: `2008`). O aplicativo verifica se a aeronave já possui missão ativa. |
+| **OMAvEx** | Não | Organização militar de aviação: 1º, 2º, 3º ou 4º BAvEx, DstAvEx, CIAvEx, BMS ou CAvEx. |
+| **Nome Operação** | Não | Nome da operação (ex.: `OPERAÇÃO ÁGUIA`). |
+| **Ordem de Missão** | Não | Referência da OMA (ex.: `OM Nº 001/2026`). |
+| **HV Distribuída** | Sim | Horas de voo distribuídas, em formato decimal (ex.: `10.5`). Selecione também a parte **P1** ou **P2**. |
+| **Cota** | Não | Origem da cota principal: COTer, CAvEx, CAvEx Hipotecado, Interna ou Outra. Em **Outra**, digite o nome da cota. |
+| **Órgão Apoiado** | Não | Organização apoiada pela missão. |
+| **Local** | Não | Local da missão. |
+| **Data Início** | Sim | Data de início da missão. |
+| **Data Término** | Sim | Data prevista de término. Não pode ser anterior à data de início. |
+| **Cmt Missão Aérea** | Não | Comandante da missão aérea. |
+| **Ctt Cmt Mis Ae** | Não | Telefone de contato do comandante, no formato `(00) 00000-0000`. |
+
+### Manutenção
+
+| Campo | Obrigatório | Descrição |
+| --- | --- | --- |
+| **TSN Célula** | Sim | Tempo desde novo da célula, em formato decimal. |
+| **GTM 1 = GTM 2** | — | Ative quando os dois motores têm o mesmo TSN. Nesse caso, informe apenas **TSN GTM**. Desative para informar **TSN GTM 1** e **TSN GTM 2** separadamente. |
+| **Potencial de Manutenção** | Sim | Horas restantes até a próxima manutenção, em formato decimal. |
+
+<Note>
+  Use ponto ou vírgula como separador decimal. O aplicativo converte a vírgula em ponto automaticamente.
+</Note>
+
+## Cotas de horas de voo
+
+A cota principal é definida pelos campos **HV Distribuída** e **Cota**. Quando a missão usa horas de mais de uma origem, marque **Mais de uma cota** e cadastre as cotas adicionais.
+
+Para cada cota adicional, informe:
+
+- **Ordem de Referência**: número da ordem que distribuiu as horas (ex.: `26.456`). Toque em **Buscar Ordem para Cota N** para preencher a partir da relação de OMA.
+- **Identificação da Cota**: nome da cota (ex.: `COTER`, `CAvEx`).
+- **HV Distribuída e Parte**: horas distribuídas e a parte **P1** ou **P2**.
+- **Início da Vigência** e **Término (opcional)**: período em que a cota vale.
+
+Toque em **Adicionar outra cota** para incluir mais cotas ou no ícone de remover para excluir uma cota adicional.
+
+Exemplo de missão com duas cotas:
+
+```text
+Cota principal: COTer | 10.5 HV | P1
+Cota 2 (Adicional): CAvEx | Ordem de Referência 26.456 | 4.0 HV | P2 | vigência a partir de 2026-10-21
+```
+
+Os saldos de cada cota (distribuído, empregado e saldo) aparecem na seção **Disponibilidade** da página inicial.
+
+## Próximos passos
+
+<CardGroup cols={2}>
+  <Card title="Missão ativa" icon="plane" href="/missoes/missao-ativa">
+    Selecione a missão que receberá as Mensagens de Posição.
+  </Card>
+  <Card title="Editar missão e OFRAG" icon="pen" href="/missoes/editar-missao">
+    Corrija dados e aplique alterações de ordem.
+  </Card>
+</CardGroup>
