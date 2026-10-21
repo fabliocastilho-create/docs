@@ -1,47 +1,79 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Acesso ao sistema"
+description: "Entre no MSG POS AVEX, faça o primeiro acesso e recupere sua senha."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
+## Pré-requisitos
 
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
+Antes de começar, você precisa:
 
-## Prerequisites
+- Estar cadastrado no MSG POS AVEX pela sua unidade.
+- Saber seu **trigrama** e seu **CP**.
+- Ter conexão com a internet no primeiro login.
 
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+## Entrar no sistema
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
-
-    ```bash
-    npm install your-package
-    ```
+  <Step title="Informe o trigrama">
+    Na tela de login, digite seu trigrama no campo **Trigrama** (por exemplo, `FBC`). O aplicativo converte as letras para maiúsculas automaticamente.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
-
-    ```bash
-    your-cli init
-    ```
+  <Step title="Informe a senha">
+    Digite sua senha no campo **Senha**. No primeiro acesso, use seu CP como senha provisória.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
-
-    ```bash
-    your-cli start
-    ```
+  <Step title="Entre">
+    Toque em **Entrar**. Se for seu primeiro acesso, o aplicativo abre a tela **Primeiro Acesso**.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## Primeiro acesso
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+O primeiro acesso tem duas etapas: **Dados** e **Nova senha**.
+
+<Steps>
+  <Step title="Confira seus dados">
+    Revise os dados importados pela sua unidade e corrija o que for necessário. Os campos **Trigrama** e **Nome** são obrigatórios. Os demais campos são Posto/Graduação, Arma/Quadro/Serviço, Nome de Guerra, Função de Bordo, Especialidade Aviação, Aeronave Atual, Situação/Vínculo, OM Classificação, OM à Disposição e OMAvEx. Toque em **Confirmar Dados**.
+  </Step>
+  <Step title="Crie sua senha definitiva">
+    Digite a nova senha com no mínimo 6 caracteres e repita no campo **Confirmar nova senha**. Toque em **Criar Nova Senha**.
+  </Step>
+  <Step title="Entre novamente">
+    Depois de criar a senha, o aplicativo encerra a sessão. Entre novamente com seu trigrama e a nova senha.
+  </Step>
+</Steps>
+
+## Autorizar a localização
+
+Depois do login, o aplicativo exibe o aviso **Uso da localização**. O MSG POS AVEX usa a localização do aparelho para georreferenciar as Mensagens de Posição e permitir que os gestores autorizados acompanhem as missões.
+
+A geolocalização automática não aparece no texto da Msg Pos compartilhada. Toque em **Continuar e autorizar localização** para seguir para a página inicial.
+
+## Recuperar a senha
+
+<Steps>
+  <Step title="Abra a recuperação">
+    Na tela de login, toque em **Esqueci minha senha**.
+  </Step>
+  <Step title="Informe CP e PREC-CP">
+    Digite seu CP e seu PREC-CP, somente números. Digite o PREC-CP sem hífen e sem indicador de dependente.
+  </Step>
+  <Step title="Cadastre a nova senha">
+    Digite a nova senha com no mínimo 6 caracteres, confirme e toque em **Redefinir senha**.
+  </Step>
+  <Step title="Volte ao login">
+    Ao ver **Senha redefinida com sucesso**, toque em **Voltar para o login** e entre com a nova senha.
+  </Step>
+</Steps>
+
+## Sair do sistema
+
+No cabeçalho da página inicial, toque no ícone **Sair**. O aplicativo encerra a sessão e remove do aparelho os dados de usuário salvos para uso offline.
+
+## Configuração inicial
+
+Quando o sistema ainda não tem usuários, o aplicativo exibe a tela **Configuração Inicial**. O responsável pela implantação seleciona a planilha oficial (formato XLSX ou XLS) com os aeronavegantes autorizados e toca em **Importar Usuários**.
+
+- O trigrama passa a ser o login de cada usuário.
+- O CP é usado apenas como senha provisória no primeiro acesso.
+- CPF e identidade não são armazenados pelo aplicativo.
+
+Depois da importação, toque em **Ir para o Login**.
