@@ -1,0 +1,241 @@
+---
+title: "Horas de voo P1/P2 e controle de cotas"
+sidebarTitle: "Horas de voo e cotas"
+description: "Como registrar horas de voo P1 e P2 nas mensagens de posição, entender o cálculo de empregado e saldo, e gerenciar múltiplas cotas e OFRAG no MSG POS AVEX."
+keywords:
+  - "horas de voo"
+  - "P1"
+  - "P2"
+  - "cotas"
+  - "OFRAG"
+  - "disponibilidade"
+  - "empregado"
+---
+
+O controle de horas de voo no MSG POS AVEX segue a lógica da Aviação do Exército: **P1** representa o tempo de solo (partida ao corte) e **P2** o tempo de voo (deslocamento de ar). O aplicativo calcula automaticamente o empregado acumulado e o saldo remanescente de cada cota, além de alertar quando o saldo fica negativo.
+
+## Conceitos de P1 e P2
+
+No MSG POS AVEX, os campos de horas de voo são interpretados da seguinte forma:
+
+- **P1**: horas de solo, do momento da partida ao corte do motor. Representado por um ícone de helicóptero no solo.
+- **P2**: horas de voo propriamente ditas, correspondentes ao deslocamento de ar. Representado por um ícone de helicóptero em voo.
+
+<Info>
+  A soma P1 + P2 não é calculada automaticamente pelo aplicativo. Cada valor é informado e validado de forma independente.
+</Info>
+
+{/* CAPTURA: painel-empregado-home */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel **Empregado** da página inicial mostrando os cards **HV – P1** e **HV – P2** com ícones respectivos.
+</Callout>
+
+## Registro de horas na mensagem de posição
+
+Ao preencher uma mensagem de posição (Msg Pos), você registra as horas do dia na seção correspondente. O formulário se adapta automaticamente: se a missão possui apenas uma cota, os campos são **P1** e **P2** simples; se houver múltiplas cotas, aparecem campos separados por cota.
+
+### Campos de horas (cota única)
+
+| Campo | Obrigatório | Regra/validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **P1** | Sim | Decimal com até 1 casa (ex: 2.5) | "P1 é obrigatório." / "P1 deve ser um valor decimal (ex: 2.5)." |
+| **P2** | Sim | Decimal com até 1 casa (ex: 1.7) | "P2 é obrigatório." / "P2 deve ser um valor decimal (ex: 1.7)." |
+
+### Regras de validação cruzada
+
+O aplicativo aplica uma regra adicional ao validar os campos de horas:
+
+- **P2 não pode ser maior que P1.** Se o valor informado em P2 ultrapassar o de P1, o sistema exibe a mensagem "P2 não pode ser maior que P1.".
+
+<Tip>
+  Em dias de folga (day off), os campos de horas são preenchidos automaticamente com **0.0** e ficam desabilitados.
+</Tip>
+
+{/* CAPTURA: formulario-msg-pos-horas */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** formulário de Msg Pos com os campos **P1** e **P2** preenchidos e a validação cruzada visível.
+</Callout>
+
+## Múltiplas cotas e distribuição de horas
+
+Quando uma missão possui mais de uma cota (por exemplo, após aplicação de uma OFRAG de alteração de cota), o formulário de Msg Pos exibe uma seção expandida: **Cota 1 — Nome**, **Cota 2 — Nome**, etc. Cada cota tem seus próprios campos **P1** e **P2**.
+
+### Como funciona a soma automática
+
+<Steps>
+  <Step title="Informe as horas por cota">
+    Preencha **P1** e **P2** para cada cota ativa do dia. O sistema aceita valores decimais com até 1 casa.
+  </Step>
+  <Step title="Soma automática no total da aeronave">
+    O aplicativo soma automaticamente todos os valores P1 e P2 das cotas e preenche os campos gerais **P1** e **P2** da aeronave, logo abaixo.
+  </Step>
+  <Step title="Envie a mensagem">
+    O total geral é o que será registrado na mensagem de posição, mas o detalhamento por cota é preservado no banco para controle de saldo individual.
+  </Step>
+</Steps>
+
+A tabela a seguir resume os campos por cota:
+
+| Campo | Obrigatório | Regra/validação | Observação |
+| --- | --- | --- | --- |
+| **P1 (Cota X)** | Sim | Decimal com até 1 casa | Desabilitado se "Sem atividade aérea" estiver ativo |
+| **P2 (Cota X)** | Sim | Decimal com até 1 casa | Desabilitado se "Sem atividade aérea" estiver ativo |
+| **Total Geral da Aeronave** | Automático | Soma das cotas | Campo somente leitura |
+
+### Tipos de cota disponíveis
+
+As cotas reconhecidas pelo sistema são:
+
+- **COTer**
+- **CAvEx**
+- **CAvEx Hipotecado**
+- **Interna**
+
+<Info>
+  A cota principal da missão é definida no cadastro. Cotas adicionais são criadas automaticamente pelo sistema quando uma OFRAG de alteração de cota é aplicada.
+</Info>
+
+{/* CAPTURA: formulario-multiplas-cotas */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** formulário de Msg Pos com múltiplas cotas expandidas, mostrando os campos P1/P2 de cada cota e o **Total Geral da Aeronave**.
+</Callout>
+
+## OFRAG e ações sobre cotas
+
+A aplicação de uma OFRAG pode alterar a cota principal ou adicionar cotas à missão. Veja as ações possíveis:
+
+### Aplicação de OFRAG
+
+<Steps>
+  <Step title="Abra a edição da missão">
+    Acesse a tela de edição da missão ativa. A seção de OFRAG está disponível para busca.
+  </Step>
+  <Step title="Busque a OFRAG">
+    Utilize o campo de busca para localizar a OFRAG desejada. O sistema lista as linhas disponíveis.
+  </Step>
+  <Step title="Selecione a linha">
+    Clique na linha da OFRAG. O sistema verifica se aquela linha já foi utilizada em outra missão ou na missão atual. Se já estiver em uso, a seleção é bloqueada.
+  </Step>
+  <Step title="Confirme a aplicação">
+    Ao confirmar, o sistema processa a OFRAG e retorna as cotas atualizadas. O formulário é sincronizado automaticamente com os novos valores de horas distribuídas e a nova cota (se houver).
+  </Step>
+</Steps>
+
+### Ações de OFRAG visíveis na interface
+
+As ações típicas exibidas na listagem de OFRAG incluem:
+
+- **Alteração de Cota**: muda a cota principal da missão.
+- **Alteração de HV**: modifica as horas distribuídas da cota.
+- **Alteração de Local**: atualiza o local da missão.
+- **Alteração de Datas**: ajusta o início ou término da missão.
+
+<Warning>
+  Não é possível aplicar a mesma linha de OFRAG duas vezes na mesma missão, nem utilizá-la em outra missão já em andamento. O sistema bloqueia com a mensagem apropriada.
+</Warning>
+
+{/* CAPTURA: modal-ofrag-edicao-missao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** modal de busca de OFRAG na tela de edição de missão, mostrando linhas disponíveis e bloqueadas.
+</Callout>
+
+## Painéis da página inicial
+
+A página inicial exibe um quadro de acompanhamento da missão ativa com painéis que consomem as horas registradas nas mensagens de posição.
+
+### Painel Empregado
+
+Mostra o total de horas já empregadas na missão:
+
+| Card | Conteúdo |
+| --- | --- |
+| **HV – P1** | Soma de todas as horas P1 das mensagens de posição (exceto mensagens com status FINAL) |
+| **HV – P2** | Soma de todas as horas P2 das mensagens de posição (exceto mensagens com status FINAL) |
+| **Pot Mnt** | Saldo remanescente do potencial de manutenção (calculado como potencial inicial menos P2 empregado) |
+| **Dias em Missão** | Contagem de dias desde a primeira mensagem de posição até a data atual (ou até a data de encerramento, se a missão estiver fechada) |
+
+### Painel Disponibilidade
+
+Exibe o saldo remanescente de horas de voo. O comportamento muda conforme o número de cotas:
+
+#### Cota única
+
+Dois cards são exibidos:
+
+- **P1**: saldo remanescente de P1 (horas distribuídas menos empregado). Destacado visualmente se a missão foi cadastrada com tipo de HV distribuída = P1.
+- **P2**: saldo remanescente de P2 (horas distribuídas menos empregado). Destacado visualmente se a missão foi cadastrada com tipo de HV distribuída = P2.
+
+Cada card mostra também o valor **Empregado** logo abaixo do saldo.
+
+#### Múltiplas cotas
+
+Cada cota é exibida em um card separado contendo:
+
+- Nome da cota (ex: COTer, CAvEx)
+- Tipo da cota (**P1** ou **P2**)
+- Cadeia de ordens de referência (Ordem: ...), se houver
+- **Saldo**: horas distribuídas menos empregado
+- **Distr**: horas distribuídas originalmente
+- **Empr**: horas já empregadas
+
+<Info>
+  O saldo total no topo do painel é a soma dos saldos de todas as cotas ativas. Se houver apenas uma cota, o saldo total é a soma dos saldos P1 e P2.
+</Info>
+
+{/* CAPTURA: painel-disponibilidade-multiplas-cotas */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel **Disponibilidade** da página inicial mostrando múltiplas cotas com saldo, distribuído e empregado.
+</Callout>
+
+## Alertas de saldo negativo
+
+O aplicativo destaca visualmente quando o saldo de horas fica negativo:
+
+- O valor do saldo é exibido em **vermelho** (texto `text-red-700`).
+- Isso ocorre tanto no painel **Disponibilidade** quanto no card **Pot Mnt**.
+
+O cálculo do saldo segue a fórmula:
+
+- **Saldo P1** = horas distribuídas inicialmente − soma de P1 de todas as mensagens
+- **Saldo P2** = horas distribuídas inicialmente − soma de P2 de todas as mensagens
+- **Potencial de Manutenção remanescente** = potencial inicial − soma de P2 empregado
+
+<Warning>
+  Um saldo negativo indica que a missão consumiu mais horas do que o previsto na cota. Avalie a necessidade de aplicar uma OFRAG de alteração de HV ou encerrar a missão.
+</Warning>
+
+## Cálculo de empregado e saldo (resumo técnico)
+
+Para missões com uma única cota, o aplicativo utiliza a função `getActiveMissionSummary` (definida em `src/lib/missionReportUtils.ts`) para calcular:
+
+1. **P1 empregado**: soma de `flight_hours_p1` de todas as mensagens de posição, arredondada em 1 casa decimal.
+2. **P2 empregado**: soma de `flight_hours_p2` de todas as mensagens de posição, arredondada em 1 casa decimal.
+3. **Saldo remanescente**: `distributedInitial − p1Used` (para P1) e `distributedInitial − p2Used` (para P2).
+
+Para múltiplas cotas, o cálculo é feito individualmente por cota no painel da página inicial (`quotaSummaries`), considerando apenas as mensagens que possuem o array `quota_hours` vinculado àquela cota específica. Mensagens com status **FINAL** são excluídas do cálculo de empregado e saldo.
+
+<Tip>
+  A mensagem de posição final (Msg Pos FINAL) não entra no cálculo de empregado e saldo. Ela serve apenas para encerramento da missão.
+</Tip>
+
+## Perfis e permissões
+
+<Info>
+  O registro de horas de voo na Msg Pos é uma ação operacional. Todos os perfis de usuário podem preencher os campos P1 e P2 desde que estejam vinculados à missão ativa da sua unidade/OMAvEx.
+</Info>
+
+A gestão de cotas e a aplicação de OFRAG, no entanto, estão restritas aos perfis de gestão:
+
+- **Gestor Global**
+- **Gestor CAvEx**
+- **Gestor Local**
+- **Administrador Local**
+
+<Check>
+  A tela de administração (onde se buscam e aplicam OFRAGs) exige conexão com a internet.
+</Check>

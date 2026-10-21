@@ -1,0 +1,200 @@
+---
+title: "Relatório Final de Missão"
+sidebarTitle: "Relatório final"
+description: "Visualize e exporte o relatório final consolidado de uma missão encerrada, com horas de voo, cotas, QAV, manutenção e anexos."
+keywords:
+  - "relatório"
+  - "PDF"
+  - "missão encerrada"
+  - "horas de voo"
+  - "QAV"
+  - "cotas"
+---
+
+O Relatório Final de Missão é gerado automaticamente a partir das Mensagens de Posição vinculadas a uma missão encerrada. Ele consolida todos os dados operacionais em formato tabular e permite exportação em PDF.
+
+<Info>
+  O relatório só está disponível para missões com status "encerrada" (CLOSED) que possuam uma Mensagem de Posição FINAL.
+</Info>
+
+## Como acessar o relatório
+
+Você pode abrir o relatório a partir de duas telas:
+
+- **Missões Anteriores / Canceladas**: toque em **Relatório da Missão** ao visualizar os detalhes de uma missão encerrada.
+- **Tela de Mensagens de Posição**: o relatório também pode ser acessado durante a navegação de mensagens de uma missão encerrada.
+
+<Steps>
+  <Step title="Localize a missão encerrada">
+    Acesse [Missões Anteriores / Canceladas](/missoes/consulta-e-historico) e toque na missão desejada.
+  </Step>
+  <Step title="Abra o relatório">
+    Toque em **Relatório da Missão**.
+  </Step>
+  <Step title="Aguarde o carregamento">
+    O sistema busca todas as mensagens, anexos e dados consolidados da missão.
+  </Step>
+</Steps>
+
+{/* CAPTURA: tela-relatorio-missao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela do relatório final com cabeçalho e tabela de dados consolidados.
+</Callout>
+
+## Cabeçalho do relatório
+
+A parte superior exibe um painel informativo com os dados gerais da missão:
+
+| Seção | Campos |
+| --- | --- |
+| **OMAvEx / ANV** | OMAvEx da missão e número da aeronave (EXB-[número]) |
+| **Missão / Período de Execução** | Nome da operação e período (data de início a data de término) |
+| **Órgão Apoiado / Local** | Organização apoiada e local da missão |
+| **Dias em Missão** | Total de dias contados da primeira mensagem até a data final |
+| **Pernoites Fora** | Quantidade de pernoites fora da base (exclui pernoites em unidades da AvEx) |
+| **Cmt Missão / Contato** | Nome do comandante da missão aérea e telefone |
+| **Tripulação** | Trigramas da tripulação extraídos das mensagens |
+| **Total HV** | Total acumulado de horas de voo P1 e P2 |
+| **Total QAV** | Total acumulado de combustível em litros, com detalhamento por tipo (BR e Outros) |
+
+<Note>
+  O cálculo de pernoites fora exclui automaticamente registros que contenham termos como SBTA, Taubaté, CAvEx, 1º BAvEx, 2º BAvEx, CIAVEx ou BMS.
+</Note>
+
+## Cotas: horas de voo e ordens
+
+Se a missão possuir cotas vinculadas, uma seção adicional exibe cada cota com:
+
+- **Nome da cota** (ex.: Cota 1)
+- **Horas de voo distribuídas** (original e atual, se houver alteração)
+- **Ordem de referência** (OMA ou OFRAGs vinculados)
+
+<Info>
+  Quando uma cota teve alteração de horas (via OFRAG), o sistema exibe o valor original e o valor atual com uma seta (→) indicando a mudança.
+</Info>
+
+{/* CAPTURA: secao-cotas-relatorio */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção de cotas no relatório mostrando nome, horas original/alterada e ordem de referência.
+</Callout>
+
+## Tabela de dados consolidados
+
+O corpo do relatório é uma tabela com todas as Mensagens de Posição da missão, ordenadas cronologicamente. Cada linha corresponde a uma mensagem.
+
+### Colunas da tabela
+
+| Grupo | Coluna | Descrição |
+| --- | --- | --- |
+| **Data** | Data | Data da mensagem no formato DD MMM AA |
+| **Horas de Voo Missão** | P1 Diário | Horas de voo P1 do dia |
+|  | P1 Acumulado | Total acumulado de P1 até aquela data |
+|  | P2 Diário | Horas de voo P2 do dia |
+|  | P2 Acumulado | Total acumulado de P2 até aquela data |
+|  | Dspn | Disponibilidade por cota (saldo de horas distribuídas) |
+| **QAV** | Diário | Quantidade de combustível do dia |
+|  | CEPA | Indicador visual (ícone de clipe) se houver CEPA anexada |
+|  | Acumulado | Total acumulado de combustível |
+| **Missão** | Dia | Missão executada no dia |
+|  | Pernoite Anv / Trip | Local de pernoite da aeronave e da tripulação |
+| **Mnt** | TSN Célula | Tempo de serviço da célula acumulado |
+|  | TSN GTM1 | Tempo de serviço do GTM1 acumulado |
+|  | TSN GTM2 | Tempo de serviço do GTM2 acumulado |
+|  | Pot | Potencial de manutenção restante |
+| **Outras Informações** |  | Campo livre preenchido na mensagem |
+| **Anexos** |  | Indicador visual (ícone de clipe) se houver anexos |
+
+<Note>
+  A linha correspondente à Mensagem de Posição FINAL é destacada com fundo diferenciado (bg-olive-50) para fácil identificação.
+</Note>
+
+### Detalhamento por cota nas células
+
+As células de P1, P2 e Dspn exibem, quando aplicável, um detalhamento por cota em fonte menor:
+
+- **P1 Diário/Acumulado**: lista cada cota com suas horas individuais
+- **Dspn**: mostra o saldo restante de cada cota e seu tipo (P1 ou P2)
+
+<Warning>
+  Se houver horas de voo sem cota identificada, o sistema exibe um aviso em destaque amarelo: "HV sem cota identificada: [valor]".
+</Warning>
+
+{/* CAPTURA: tabela-dados-relatorio */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tabela de dados consolidados mostrando colunas de HV, QAV, Missão, Mnt e anexos.
+</Callout>
+
+## Assinatura do comandante
+
+Ao final do relatório, exibe-se o nome do comandante da missão aérea com destaque tipográfico (nome de guerra em negrito, quando disponível) e o telefone de contato.
+
+## Exportação do relatório
+
+Na parte inferior da tela, dois botões fixos permitem exportar o relatório:
+
+### Gerar PDF
+
+Toque em **Gerar PDF** para baixar o arquivo. O nome do arquivo segue o padrão:
+
+```text
+Relatorio_Missao_EXB-{número}.pdf
+```
+
+<Steps>
+  <Step title="Toque em Gerar PDF">
+    O sistema inicia a geração do documento.
+  </Step>
+  <Step title="Aguarde o carregamento de anexos">
+    Uma mensagem informa: "Gerando relatório e carregando anexos..."
+  </Step>
+  <Step title="Salve o arquivo">
+    O PDF é salvo automaticamente no dispositivo.
+  </Step>
+</Steps>
+
+### Compartilhar PDF
+
+Toque em **Compartilhar PDF** para enviar o relatório diretamente por aplicativos instalados no dispositivo.
+
+<Steps>
+  <Step title="Toque em Compartilhar PDF">
+    O sistema prepara o arquivo.
+  </Step>
+  <Step title="Escolha o aplicativo">
+    Se o dispositivo suportar compartilhamento nativo, a interface do sistema aparece. Caso contrário, o PDF é salvo para envio manual.
+  </Step>
+</Steps>
+
+<Info>
+  Se o compartilhamento direto não estiver disponível, o sistema exibe: "O compartilhamento direto não está disponível neste dispositivo. O PDF foi gerado para envio manual."
+</Info>
+
+{/* CAPTURA: botoes-exportacao-relatorio */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** botões Gerar PDF e Compartilhar PDF na parte inferior da tela.
+</Callout>
+
+## Anexos no relatório
+
+O relatório em PDF incorpora visualmente as CEPAs anexadas às Mensagens de Posição. Outros tipos de anexo (documentos, vídeos, etc.) não são incorporados visualmente, mas seus nomes, datas e vínculos com a mensagem permanecem registrados no relatório.
+
+<Note>
+  O sistema exibe uma observação quando um anexo não pode ser incorporado ao PDF: "A CEPA está anexada à missão, mas este formato de arquivo não pôde ser incorporado visualmente ao PDF."
+</Note>
+
+## Mensagens de notificação
+
+| Mensagem | Situação |
+| --- | --- |
+| "Carregando relatório..." | Dados da missão estão sendo buscados |
+| "Não foi possível carregar os dados do relatório." | Erro na comunicação com o servidor |
+| "Gerando relatório e carregando anexos..." | PDF está sendo gerado |
+| "Relatório gerado com [n] anexo(s)." | PDF gerado com sucesso e anexos incorporados |
+| "Relatório gerado. Não há anexos nas Msg Pos desta missão." | PDF gerado, mas sem anexos |
+| "Não foi possível gerar o relatório com os anexos." | Erro durante a geração do PDF |
+| "Preparando relatório e carregando anexos..." | Compartilhamento em andamento |
+| "Não foi possível compartilhar o relatório." | Erro durante o compartilhamento |

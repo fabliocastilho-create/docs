@@ -1,0 +1,393 @@
+---
+title: "Administração e gerenciamento de usuários"
+sidebarTitle: "Administração"
+description: "Guia completo da Área de Gestão do MSG POS AVEX, incluindo acompanhamento de missões, gestão de pessoal, planilhas de usuários e configuração inicial do sistema."
+keywords:
+  - "administração"
+  - "gestão"
+  - "usuários"
+  - "perfis"
+  - "OMAvEx"
+  - "planilha"
+---
+
+A Área de Gestão reúne as ferramentas administrativas do MSG POS AVEX. O acesso é exclusivo para os quatro perfis de gestão (Gestor Global, Gestor CAvEx, Gestor Local e Administrador Local) e exige conexão com a internet. As funções disponíveis variam conforme o seu perfil.
+
+<Info>
+  Para a matriz completa de permissões, consulte [Perfis e permissões](/primeiros-passos/perfis-e-permissoes).
+</Info>
+
+## Como acessar a Área de Gestão
+
+Na **Página inicial**, você encontra os botões de gestão na seção inferior do conteúdo.
+
+{/* CAPTURA: admin-homepage-buttons */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** página inicial mostrando os botões **Gestão de Missões** e **Gestão de Pessoal**.
+</Callout>
+
+Os seguintes perfis podem acessar cada área:
+
+| Área | Perfis permitidos |
+| --- | --- |
+| **Gestão de Missões** | Gestor Global, Gestor CAvEx, Gestor Local, Administrador Local |
+| **Gestão de Pessoal** | Gestor Global, Administrador Local |
+
+Ao tocar em **Gestão de Missões** ou **Gestão de Pessoal**, o sistema verifica se há conexão com a internet. Sem internet, a tela exibe a mensagem: "A administração requer conexão com a internet."
+
+## Tela inicial da Área de Gestão
+
+Ao abrir a Área de Gestão, você vê a tela **Início** com o título **"Selecione a área de gestão"** e as opções disponíveis para o seu perfil.
+
+{/* CAPTURA: admin-section-home */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela inicial da Área de Gestão com os cards de **Gestão de Missões** e **Gestão de Pessoal**.
+</Callout>
+
+Cada card exibe:
+
+- **Gestão de Missões**, com o ícone de bússola e o texto "Missões ativas, mapa, posições e situação operacional"
+- **Gestão de Pessoal**, com o ícone de usuários e o texto "Usuários, perfis, planilhas e histórico administrativo"
+
+## Gestão de Missões
+
+A **Gestão de Missões** permite acompanhar missões em andamento, encerradas e canceladas. Ela está disponível para Gestor Global, Gestor CAvEx, Gestor Local e Administrador Local.
+
+<Tip>
+  Para enviar Mensagens de Posição ou operacionalizar missões, use as telas específicas descritas em [Criação de mensagens de posição](/mensagens/criacao), [Mapa e localização](/mensagens/mapa-e-localizacao) e [Relatório final](/missoes/relatorio-final).
+</Tip>
+
+### Seleção de OMAvEx
+
+Na seção **"Escopo da administração"**, você define qual OMAvEx deseja acompanhar.
+
+<Info>
+  **Gestor Global e Gestor CAvEx:** podem selecionar qualquer OMAvEx no campo de seleção ou manter "Todas as OMAvEx". O Gestor Global também visualiza a opção "CAvEx".
+
+  **Gestor Local e Administrador Local:** o escopo é fixo na sua OMAvEx, exibido em um painel verde com o texto: "Seu acesso administrativo é limitado a esta OMAvEx."
+</Info>
+
+### Abas de situação da missão
+
+A tela possui três abas:
+
+- **Em andamento** (fundo verde-oliva): missões ativas e missões encerradas ou canceladas nos últimos 3 dias
+- **Encerradas** (fundo vermelho): todas as missões com status encerrado, filtráveis por período
+- **Canceladas** (fundo roxo): todas as missões canceladas, filtráveis por período
+
+Nas abas **Encerradas** e **Canceladas**, é possível filtrar por período usando os campos **Data inicial** e **Data final**. Para encerradas, o período considera a data de início da missão. Para canceladas, considera a data de cancelamento. O botão **Limpar período** remove o filtro.
+
+{/* CAPTURA: admin-mission-tabs */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** abas "Em andamento", "Encerradas" e "Canceladas" com contadores de missões.
+</Callout>
+
+### Seleção e visão geral da missão
+
+Após carregar as missões, você pode selecionar uma missão específica no campo **"Selecionar missão"**. Quando uma missão é selecionada, um card de destaque exibe:
+
+- O número da aeronave (EXB-XXXX)
+- O nome da operação
+- O último status
+- Os indicadores operacionais: **P1 acumulado**, **P2 acumulado**, **Pot Mnt** (potencial de manutenção restante), **HV restante** (horas de voo restantes)
+
+<Warning>
+  Valores negativos de potencial de manutenção ou horas de voo restantes aparecem em vermelho, indicando extrapolação.
+</Warning>
+
+O botão **"Ver status da missão"** abre um modal completo de acompanhamento.
+
+### Mapa de missões
+
+A seção **"Mapa de Missões"** exibe pins de todas as missões do escopo atual. Se uma missão estiver selecionada, o mapa centraliza nela. O botão **"Mostrar todas"** desfoca a seleção.
+
+Para mais detalhes sobre como funciona o mapa no aplicativo, consulte [Mapa e localização](/mensagens/mapa-e-localizacao).
+
+{/* CAPTURA: admin-map-view */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** mapa de missões mostrando pins de múltiplas missões ativas.
+</Callout>
+
+### Status detalhado da missão (modal)
+
+Ao tocar em **"Ver status da missão"**, um modal exibe as seguintes seções:
+
+**1. Cabeçalho e identificação**
+
+- Título: "Acompanhamento da missão" (ou "Acompanhamento CAvEx" para Gestores CAvEx)
+- Status: **Em andamento**, **Encerrada** ou **Cancelada**
+- Nome da operação, OMAvEx, EXB-XXXX e imagem da aeronave
+- Local e órgão apoiado
+
+**2. Indicadores**
+
+| Indicador | Descrição |
+| --- | --- |
+| P1 acumulado | Horas de voo do P1 acumuladas |
+| P2 acumulado | Horas de voo do P2 acumuladas |
+| Pot Mnt | Potencial de manutenção restante |
+| Dias em Missão | Quantidade de dias desde o início |
+
+**3. Dados da missão**
+
+- Comandante da Missão Aérea e telefone
+- Tripulação (trigramas autorizados)
+- Início da missão e término previsto
+- Local da aeronave e local da tripulação
+
+**4. Disponibilidade por cota**
+
+Exibe cartões de cada cota ativa, mostrando: nome da cota, parte (P1 ou P2), horas distribuídas, horas empregadas e saldo. Um totalizador de **SALDO TOTAL** aparece no topo da seção.
+
+**5. Combustível acumulado**
+
+Somatório por tipo de combustível, como **BR** e **Outros**. Se não houver abastecimentos, aparece: "Nenhum abastecimento registrado".
+
+**6. Mensagens de posição**
+
+Linha do tempo com mensagens registradas e faltantes. As mensagens pendentes aparecem com badge "Pendente" em fundo amarelo. A mensagem mais recente registrada é destacada com o badge "Mais recente registrada".
+
+Ao tocar em uma mensagem, você visualiza o texto completo da Msg Pos.
+
+<Note>
+  Esta é uma visualização de acompanhamento. Nenhum dado operacional pode ser alterado por esta tela.
+</Note>
+
+{/* CAPTURA: admin-mission-detail */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** modal de acompanhamento de missão com indicadores, dados da missão e linha do tempo de mensagens.
+</Callout>
+
+### Exclusão de missões
+
+Gestores Globais e Administradores Locais têm acesso ao botão **"Excluir Missão"** no cabeçalho. Isso abre a tela de exclusão, onde as missões são agrupadas por situação:
+
+| Situação | Descrição |
+| --- | --- |
+| Iniciadas | Criadas, mas sem nenhuma Msg Pos |
+| Em andamento | Ativas, com pelo menos uma Msg Pos |
+| Encerradas | Já foram encerradas |
+| Canceladas | Foram canceladas |
+
+Ao tocar em **Excluir**, o sistema pede confirmação com a pergunta "Excluir definitivamente a missão?", seguida da aeronave (EXB-XXXX), do nome da operação, da OMAvEx e do aviso "Esta ação não poderá ser desfeita."
+
+Após a exclusão, a mensagem de sucesso exibida é: "Missão EXB-XXXX excluída com sucesso."
+
+<Warning>
+  A exclusão de missão é irreversível. Use com extrema cautela.
+</Warning>
+
+## Gestão de Pessoal
+
+A **Gestão de Pessoal** está disponível para Gestor Global e Administrador Local. O Gestor CAvEx não acessa esta seção.
+
+{/* CAPTURA: admin-people-header */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** cabeçalho da tela "Gestão de Pessoal" com ícone de escudo e o título.
+</Callout>
+
+### Estrutura de gestão
+
+A tela exibe os gestores e administradores já cadastrados para a OMAvEx selecionada:
+
+| Função | Limite |
+| --- | --- |
+| **Gestores Globais** | Máximo 3 simultâneos |
+| **Gestores CAvEx** | Sem limite explícito |
+| **Gestores Locais** | Sem limite explícito |
+| **Administradores Locais** | Sem limite explícito |
+
+Se não houver gestor local cadastrado, aparece o aviso em amarelo: "Esta OMAvEx ainda não possui Gestor Local."
+
+### Base de usuários por planilha
+
+A seção **"Base de Usuários"** permite atualizar a lista de usuários autorizados de uma OMAvEx via planilha Excel.
+
+<Steps>
+  <Step title="Selecionar planilha">
+    Toque em **"Selecionar planilha"** e escolha um arquivo no formato **XLSX** ou **XLS**. O nome do arquivo aparece no botão.
+  </Step>
+  <Step title="Gerar prévia">
+    Toque em **"Gerar prévia da atualização"**. O sistema analisa a planilha e mostra:
+
+    - **Novos**: usuários que serão adicionados
+    - **Atualizados**: usuários com dados alterados
+    - **Mantidos**: usuários sem alterações
+    - **Serão inativados**: usuários que não constam na planilha
+  </Step>
+  <Step title="Revisar avisos">
+    Se houver avisos administrativos (por exemplo, dados inconsistentes), eles aparecem em caixas amarelas abaixo dos contadores.
+  </Step>
+  <Step title="Confirmar atualização">
+    Toque em **"Confirmar atualização da base"**. Após a aplicação, a tela exibe a mensagem de sucesso retornada pelo servidor.
+  </Step>
+</Steps>
+
+<Info>
+  Senhas, histórico e funções administrativas existentes são preservados durante a atualização por planilha.
+</Info>
+
+Se já existe uma planilha ativa para a OMAvEx, os dados de importação são exibidos (nome do arquivo, data, importador, total de usuários). O botão **"Conferir planilha"** permite fazer o download do arquivo original.
+
+{/* CAPTURA: admin-sheet-preview */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de prévia da planilha mostrando os contadores (Novos, Atualizados, Mantidos, Serão inativados) e possíveis avisos.
+</Callout>
+
+### Lista e busca de usuários
+
+Na seção **"Usuários"**, você visualiza todos os usuários vinculados ao escopo atual. A lista mostra:
+
+- Trigrama, nome de guerra ou nome completo
+- Posto/graduação e OMAvEx
+- Função atual (Gestor Global, Gestor CAvEx, Gestor Local, Administrador Local ou Usuário)
+- Funções locais adicionais, se houver
+
+O campo de busca permite filtrar por nome, trigrama ou função.
+
+Ao tocar em um usuário, você abre o modal de detalhes.
+
+### Detalhes e edição de usuário
+
+O modal de usuário exibe:
+
+- Trigrama e nome
+- Posto/graduação e OMAvEx
+- Função atual
+- Campos editáveis: **E-mail** e **Celular**
+
+O botão **"Salvar E-mail e Celular"** atualiza os dados de contato. A mensagem de sucesso é: "Contato atualizado com sucesso."
+
+<Note>
+  Para conceder funções de gestão, o usuário precisa ter e-mail e celular previamente cadastrados. Caso contrário, o sistema exibe o aviso: "O usuário [TRI] precisa ter [e-mail e celular] cadastrados antes de receber uma função de gestão."
+</Note>
+
+### Redefinição de senha
+
+O botão **"Resetar senha"** gera uma nova senha temporária para o usuário. Antes da execução, uma janela de confirmação exibe "Resetar a senha de [TRI]?" e o aviso "O sistema irá gerar uma senha temporária e encerrar as sessões atuais deste usuário.", com os botões **Cancelar** e **Resetar senha**.
+
+Após o reset, a senha temporária aparece em destaque em uma caixa amarela, com o aviso:
+
+> "Informe esta senha ao usuário. No próximo acesso será obrigatória a criação de uma nova senha."
+
+<Info>
+  A redefinição de senha só está disponível para usuários pertencentes à OMAvEx ativa do administrador.
+</Info>
+
+### Concessão e remoção de funções
+
+<Info>
+  Os botões de concessão e remoção de funções aparecem somente para o **Gestor Global**, e apenas para usuários da OMAvEx selecionada no escopo.
+</Info>
+
+As funções administrativas podem ser concedidas ou removidas por meio de botões no modal do usuário (**Tornar Gestor Local**, **Tornar Administrador Local**, **Retirar Gestor Local**, **Retirar Administrador Local**, **Retirar Função Administrativa**, **Retirar Função de Gestor Local**, **Tornar Gestor CAvEx**, **Tornar Gestor Global** e **Retirar função de Gestor Global**). As mensagens de confirmação e sucesso são:
+
+| Ação | Mensagem de confirmação | Mensagem de sucesso |
+| --- | --- | --- |
+| Tornar Gestor Local | "Definir [TRI] como Gestor Local da [OMAvEx]?" | "[TRI] agora é Gestor Local da [OMAvEx]." |
+| Tornar Administrador Local | "Definir [TRI] como Administrador Local da [OMAvEx]?" | "[TRI] agora é Administrador Local da [OMAvEx]." |
+| Retirar função local | "Remover [função] de [TRI] na [OMAvEx]?" | "A função local de [TRI] na [OMAvEx] foi removida." |
+| Retirar função administrativa | "Remover a função [função] de [TRI]?" | "A função administrativa de [TRI] foi removida." |
+| Tornar Gestor CAvEx | "Definir [TRI] como Gestor CAvEx? Esse usuário poderá acompanhar, em modo somente leitura, as missões ativas de todas as OMAvEx." | "[TRI] agora é Gestor CAvEx." |
+| Tornar Gestor Global | "Adicionar [TRI] como Gestor Global? Os Gestores Globais atuais permanecerão com a função." | Mensagem retornada pelo servidor |
+| Retirar Gestor Global | "Remover a função de Gestor Global de [TRI]?" | Mensagem retornada pelo servidor |
+
+<Warning>
+  O último Gestor Global do sistema não pode ser removido. O limite é de 3 Gestores Globais simultâneos.
+</Warning>
+
+Gestores CAvEx possuem apenas acesso de leitura ao acompanhamento das missões ativas de todas as OMAvEx. Não podem gerenciar usuários nem editar dados.
+
+### Histórico administrativo
+
+A seção **"Histórico Administrativo"** registra todas as alterações de gestão. Cada entrada mostra:
+
+- A ação realizada (ex: "Gestor Local definido", "Senha de usuário resetada", "Planilha de usuários aplicada")
+- Quem realizou a ação
+- O usuário afetado, quando aplicável
+- A data e hora
+
+O histórico pode ser expandido ou ocultado pelo botão **"Ver"** / **"Ocultar"**.
+
+{/* CAPTURA: admin-history */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção de histórico administrativo com lista de ações realizadas, datas e usuários envolvidos.
+</Callout>
+
+## Caixa de sugestões
+
+O Gestor Global tem acesso à **Caixa de sugestões** (disponível a partir da Página inicial, no modal de suporte/contatos).
+
+A caixa exibe as sugestões recebidas de todos os usuários do sistema. Cada sugestão mostra:
+
+- Nome, posto/graduação e trigrama do remetente
+- OMAvEx e data/hora
+- Texto completo da sugestão
+- Badge "Nova" para sugestões não lidas
+
+O botão **"Marcar como lida"** remove o status de nova. O contador de não lidas aparece ao lado do título "Caixa de sugestões".
+
+{/* CAPTURA: admin-suggestion-inbox */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** caixa de sugestões com sugestões lidas e não lidas, incluindo o botão "Marcar como lida".
+</Callout>
+
+## Configuração inicial do sistema
+
+Na primeira instalação do MSG POS AVEX, quando o sistema ainda não possui usuários cadastrados, a tela **"Configuração Inicial"** é exibida.
+
+Esta tela permite importar a planilha oficial com os aeronavegantes autorizados a utilizar o aplicativo.
+
+<Steps>
+  <Step title="Selecionar planilha">
+    Toque na área de upload e escolha uma planilha Excel (XLSX ou XLS).
+
+    <Warning>
+      Se o arquivo não for no formato correto, o sistema exibe: "Selecione uma planilha Excel no formato XLSX ou XLS."
+    </Warning>
+  </Step>
+  <Step title="Importar usuários">
+    Toque em **"Importar Usuários"**. O sistema processa a planilha e exibe o resultado.
+  </Step>
+  <Step title="Acessar o login">
+    Após a importação bem-sucedida, o botão **"Ir para o Login"** aparece. Toque para continuar.
+  </Step>
+</Steps>
+
+<Info>
+  - O **Trigrama** será utilizado como login.
+  - O **CP** será utilizado apenas como senha provisória no primeiro acesso.
+  - CPF e identidade **não** serão armazenados pelo aplicativo.
+</Info>
+
+Após a importação, a mensagem de sucesso exibe a quantidade de usuários cadastrados (ex: "150 usuários cadastrados.").
+
+{/* CAPTURA: admin-setup-page */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de Configuração Inicial mostrando a área de upload de planilha e as instruções de importação.
+</Callout>
+
+## Erros comuns e mensagens do sistema
+
+| Situação | Mensagem do sistema |
+| --- | --- |
+| Sem internet ao acessar administração | "A administração requer conexão com a internet." |
+| OMAvEx não selecionada antes da planilha (Gestor Global) | "Selecione a OMAvEx antes de carregar a planilha." |
+| Nenhuma planilha selecionada | "Selecione uma planilha." |
+| Erro ao analisar planilha | "Erro ao analisar a planilha." |
+| Erro ao aplicar planilha | "Erro ao aplicar a planilha." |
+| Erro ao atualizar contato | "Erro ao atualizar contato." |
+| Erro ao resetar senha | "Erro ao resetar a senha." |
+| Erro ao alterar permissão | "Erro ao alterar a permissão administrativa." |
+| Erro ao excluir missão | "Não foi possível excluir a missão." |
+| Último Gestor Global não pode ser removido | O botão de remoção não é exibido ou a operação é bloqueada pelo servidor |

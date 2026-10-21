@@ -1,0 +1,329 @@
+---
+title: "Criação de Mensagens de Posição"
+sidebarTitle: "Criação de Msg Pos"
+description: "Como registrar, visualizar, editar e compartilhar Mensagens de Posição da missão ativa no MSG POS AVEX."
+keywords:
+  - "mensagem de posição"
+  - "Msg Pos"
+  - "registro diário"
+  - "CEPA"
+  - "offline"
+  - "sincronização"
+---
+
+A Mensagem de Posição (Msg Pos) é o registro diário obrigatório de cada missão ativa. Você preenche os dados operacionais do dia, incluindo horas de voo, abastecimento, localização e pernoite. A Msg Pos gerada segue um formato padronizado para comunicação oficial.
+
+## Acesso à tela de Mensagem de Posição
+
+Você pode abrir a tela de duas formas:
+
+<Steps>
+  <Step title="A partir da página inicial">
+    Na **Página Inicial**, toque no card **Missão Ativa** ou no botão **Mensagem de Posição** dentro do card da missão.
+  </Step>
+  <Step title="A partir da lista de missões">
+    Na tela de consulta de missões, selecione uma missão ativa para acessar a Msg Pos.
+  </Step>
+</Steps>
+
+<Info>
+  O acesso à Msg Pos está disponível para todos os perfis de usuário autorizados na missão. Gestores de unidade e administradores locais também têm acesso se a missão pertencer à sua unidade.
+</Info>
+
+{/* CAPTURA: tela-msg-pos-lista */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de lista de Mensagens de Posição mostrando missão ativa EXB-1234, datas registradas e botões de ação.
+</Callout>
+
+## Estrutura da tela de lista
+
+Ao abrir a tela, você vê:
+
+- **Identificação da missão**: aeronave (EXB-XXXX), nome da operação e OMAvEx.
+- **Aviso de modo offline**: quando não há internet ou existem mensagens pendentes de sincronização.
+- **Mensagens pendentes**: datas anteriores ainda não registradas, destacadas em amarelo.
+- **Botão Nova Mensagem de Posição**: inicia o preenchimento da Msg Pos do próximo dia esperado.
+- **Botão Encerrar Missão**: disponível quando há pelo menos uma Msg Pos registrada. Leva à criação da Msg Pos FINAL. Veja mais em [/missoes/encerramento-e-cancelamento](/missoes/encerramento-e-cancelamento).
+- **Lista de mensagens registradas**: datas já salvas, com opções de **Visualizar** e **Editar**.
+
+Mensagens sincronizadas aparecem com o status **SALVA**. Mensagens salvas offline aparecem como **Pendente de sincronização**.
+
+{/* CAPTURA: tela-msg-pos-lista-detalhes */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** detalhe da lista mostrando mensagens salvas, mensagens pendentes de sincronização e botões de ação.
+</Callout>
+
+## Formulário de Mensagem de Posição
+
+Ao tocar em **Nova Mensagem de Posição**, o formulário é aberto com a próxima data esperada já preenchida. A data é bloqueada quando há pendências anteriores ou quando você está editando uma mensagem existente.
+
+### Campos do formulário
+
+A tabela abaixo lista todos os campos, obrigatoriedade, regras e mensagens de validação:
+
+| Campo | Obrigatório | Regra/validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **Data** | Sim | Data no formato AAAA-MM-DD, não pode ser futura nem anterior ao início da missão. Bloqueada quando há pendências. | "Data é obrigatória." |
+| **Missão Realizada no Dia** | Sim | Texto livre. Em DAY OFF, preenchido automaticamente com "Sem atividade aérea". | "Missão Realizada no Dia é obrigatória." |
+| **P1** | Sim | Valor decimal com até 1 casa (ex: 2.5). | "P1 é obrigatório." / "P1 deve ser um valor decimal (ex: 2.5)." |
+| **P2** | Sim | Valor decimal com até 1 casa. Não pode ser maior que P1. | "P2 é obrigatório." / "P2 deve ser um valor decimal (ex: 1.7)." / "P2 não pode ser maior que P1." |
+| **BR** | Não | Números inteiros, até 5 dígitos. | "BR deve conter apenas números (até 5 dígitos)." |
+| **Outros** | Não | Números inteiros, até 5 dígitos. | "Outros deve conter apenas números (até 5 dígitos)." |
+| **Local da Missão** | Sim | Texto livre. Pode herdar valor da OMA ou da mensagem anterior. | "Local é obrigatório." |
+| **Latitude/Longitude** | Não | Coordenadas geográficas preenchidas via mapa ou manualmente. | (sem mensagem específica) |
+| **Missão do Dia Seguinte** | Sim | Não aparece na Msg Pos FINAL. | "Missão do Dia Seguinte é obrigatória." |
+| **Local de Pernoite de Anv e Trip** | Condicional | Obrigatório quando a chave "Anv e Trip" está ativada. | "Local de Pernoite de Anv e Trip é obrigatório." |
+| **Local de Pernoite de Anv** | Condicional | Obrigatório quando a chave "Anv e Trip" está desativada. | "Local de Pernoite de Anv é obrigatório." |
+| **Local de Pernoite Trip** | Condicional | Obrigatório quando a chave "Anv e Trip" está desativada. | "Local de Pernoite Trip é obrigatório." |
+| **Outras Informações** | Não | Texto livre, opcional. | (sem mensagem específica) |
+
+### Blocos do formulário
+
+O formulário está organizado em seções:
+
+1. **Missão do Dia**: data, descrição da missão realizada, botão **DAY OFF** e chave **Sem atividade aérea**.
+2. **Horas de Voo**: campos P1 e P2. Quando a missão possui múltiplas cotas ativas, aparecem campos separados por cota. Veja detalhes em [/mensagens/horas-de-voo-e-cotas](/mensagens/horas-de-voo-e-cotas).
+3. **Abastecimento**: quantidades BR e Outros, com anexos CEPA. Veja detalhes em [/mensagens/abastecimentos](/mensagens/abastecimentos).
+4. **Locais**: Local da Missão e Local de Pernoite, com seletor de coordenadas no mapa. Veja detalhes em [/mensagens/mapa-e-localizacao](/mensagens/mapa-e-localizacao).
+5. **Missão do Dia Seguinte**: descrição da próxima atividade (não aparece na Msg Pos FINAL).
+6. **Outras Informações**: campo livre e anexos de arquivos/fotos.
+
+### Atalhos e chaves
+
+<CardGroup cols={2}>
+  <Card title="DAY OFF">
+    Botão que preenche automaticamente a mensagem como dia de descanso: missão como "Sem atividade aérea", horas zeradas, sem abastecimento, e locais copiados da mensagem anterior. Disponível apenas quando existe mensagem anterior.
+  </Card>
+
+  <Card title="Sem atividade aérea">
+    Chave que zera as horas de voo e preenche a missão como "Sem atividade aérea", mantendo os demais campos editáveis.
+  </Card>
+
+  <Card title="Sem abastecimento">
+    Chave que zera os campos de combustível e desabilita os campos de BR e Outros.
+  </Card>
+
+  <Card title="Mesmo do dia anterior / Mesma localização da OMA">
+    Chaves que copiam automaticamente os locais da mensagem anterior ou da OMA de origem.
+  </Card>
+</CardGroup>
+
+{/* CAPTURA: tela-msg-pos-formulario */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** formulário de Msg Pos preenchido mostrando os blocos Missão do Dia, Horas de Voo, Abastecimento e Locais.
+</Callout>
+
+## Anexos e CEPA
+
+Você pode anexar fotos e arquivos em três categorias:
+
+- **CEPA BR**: comprovante de abastecimento BR.
+- **CEPA Outros**: comprovante de abastecimento de outros combustíveis.
+- **Arquivos / Fotos**: anexos gerais vinculados a Outras Informações.
+
+Para cada categoria, toque em **Câmera** para tirar uma foto ou **Galeria** para selecionar arquivos existentes. É possível anexar **várias fotos** por categoria. Para remover, toque no ícone de lixeira sobre a miniatura.
+
+<Info>
+  Todo arquivo anexado será informado na Msg Pos da data e incluído no relatório final da missão.
+</Info>
+
+{/* CAPTURA: tela-msg-pos-anexos */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção de anexos CEPA mostrando miniaturas de fotos e botões Câmera/Galeria.
+</Callout>
+
+## Salvar e gerar a Msg Pos
+
+Ao preencher o formulário, toque no botão **Gerar Msg Pos** (ou **Gerar Msg Pos FINAL** quando estiver encerrando).
+
+<Steps>
+  <Step title="Validação">
+    O sistema verifica todos os campos obrigatórios. Se houver erros, uma janela **Corrija os dados da Msg Pos** aparece listando os campos pendentes. Toque em **Corrigir campos** para retornar ao formulário.
+  </Step>
+  <Step title="Confirmação de ausência de abastecimento">
+    Se nenhum valor de combustível foi informado, o sistema pergunta: "Nenhum abastecimento foi registrado nesta mensagem de posição. Confirma que não houve abastecimento?". Você pode **Voltar e ajustar** ou **Confirmar**.
+  </Step>
+  <Step title="Captura de geolocalização">
+    O sistema tenta capturar a localização do dispositivo automaticamente. Se não conseguir, usa a última posição válida guardada no aparelho ou uma coordenada de contingência definida pelo sistema.
+  </Step>
+  <Step title="Pré-visualização">
+    A Msg Pos é gerada no formato padronizado e exibida em tela de pré-visualização.
+  </Step>
+</Steps>
+
+### Mensagens de sucesso
+
+| Situação | Mensagem exibida |
+| --- | --- |
+| Msg Pos normal salva online | "Mensagem de Posição registrada com sucesso." |
+| Msg Pos FINAL salva | "Mensagem de Posição FINAL registrada com sucesso." |
+| Msg Pos salva offline | "Msg Pos salva neste aparelho. Ela será sincronizada automaticamente quando a internet voltar." |
+| Msg Pos offline atualizada | "Msg Pos offline atualizada neste aparelho." |
+
+### Mensagens de erro comuns
+
+| Situação | Mensagem exibida |
+| --- | --- |
+| Campos obrigatórios vazios | "Existem campos obrigatórios não preenchidos." |
+| Data futura | "Não é permitido criar Mensagem de Posição para data futura." |
+| Data antes do início da missão | "Não é permitido criar Mensagem de Posição antes do início da missão." |
+| Msg Pos já existe para a data | "Já existe uma Mensagem de Posição para esta data." |
+| Data bloqueada por pendência | "A Msg Pos de DD/MM/AAAA está bloqueada. Refaça primeiro a mensagem de DD/MM/AAAA." |
+| Erro de conexão ao salvar | "Erro ao salvar a Mensagem de Posição. Tente novamente." |
+| Erro inesperado | "Erro inesperado ao salvar. Tente novamente." |
+
+## Pré-visualização, texto gerado e compartilhamento
+
+A tela de pré-visualização exibe a Msg Pos no formato oficial, com:
+
+- Identificação da mensagem (Msg Pos EXB-XXXX - DD MMM AA).
+- Dados da missão: OMAvEx, operação, ordem de missão, período, local, comandante, telefone e tripulação.
+- Resumo diário: tipo de voo, horas P1/P2, QAV.
+- Acumulado: horas e QAV acumulados desde o início.
+- Saldos remanescentes e potencial de manutenção.
+- Missão do dia seguinte (ou "Término da Missão" na FINAL).
+- Local de pernoite.
+- Dados de manutenção (TSN Cel, TSN GTM).
+- Outras informações.
+- Identificação do emissor (trigrama).
+
+### Botões de ação na pré-visualização
+
+| Botão | Ação |
+| --- | --- |
+| **Copiar Mensagem** | Copia o texto completo para a área de transferência. |
+| **WhatsApp** | Abre o WhatsApp com o texto da mensagem pré-preenchido. |
+| **SMS** | Abre o app de SMS com o texto pré-preenchido. |
+| **Gerar PDF** | Gera um PDF da Msg Pos (ou Relatório Final completo com CEPAs, no caso da Msg Pos FINAL). |
+| **Compartilhar** | Usa o compartilhamento nativo do dispositivo. |
+
+<Warning>
+  A Msg Pos FINAL, quando confirmada, encerra a missão definitivamente. Esta ação é irreversível. Veja mais em [/missoes/encerramento-e-cancelamento](/missoes/encerramento-e-cancelamento).
+</Warning>
+
+{/* CAPTURA: tela-msg-pos-preview */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de pré-visualização da Msg Pos mostrando o texto gerado e botões de compartilhamento.
+</Callout>
+
+## Editar mensagens registradas
+
+Você pode editar uma Msg Pos já salva desde que:
+
+- A missão não esteja encerrada.
+- A mensagem não seja a Msg Pos FINAL (mensagens FINAL não podem ser editadas após o encerramento).
+- Não existam mensagens posteriores bloqueando (é necessário excluir da mais recente para a mais antiga).
+- A edição de mensagens já sincronizadas exige conexão com a internet.
+
+<Steps>
+  <Step title="Abrir a mensagem">
+    Na lista de Msg Pos, toque em **Visualizar** e depois em **Editar**.
+  </Step>
+  <Step title="Alterar os campos">
+    Modifique os dados necessários. A data não pode ser alterada.
+  </Step>
+  <Step title="Confirmar alterações">
+    Ao salvar, uma janela de confirmação exibe o resumo das alterações campo a campo, incluindo valores anteriores e novos. Toque em **Confirmar alterações** ou **Continuar editando**.
+  </Step>
+</Steps>
+
+Mensagens salvas offline podem ser editadas sem internet. Toque em **Editar** ao lado da mensagem pendente na lista.
+
+<Info>
+  Se as horas por cota estiverem incompletas ou não identificadas, a edição é bloqueada com a mensagem: "Horas por cota incompletas ou não identificadas. Edição bloqueada para preservar os dados."
+</Info>
+
+## Excluir mensagens
+
+Você pode excluir uma Msg Pos normal (não FINAL) desde que:
+
+- A missão não esteja encerrada.
+- Não existam mensagens posteriores. Se houver, é necessário excluir primeiro a mais recente.
+
+Ao tocar em **Excluir**, uma confirmação aparece: "Deseja realmente excluir a Msg Pos de DD/MM/AAAA?". Após confirmar, a mensagem é removida permanentemente.
+
+Mensagens pendentes de sincronização podem ser editadas, mas a exclusão de mensagens offline é feita apenas pela substituição do conteúdo (não há botão de exclusão direta para pendentes).
+
+## Comportamento offline
+
+O registro de Msg Pos normais funciona sem internet, desde que você já tenha entrado no aplicativo com conexão neste aparelho. Quando você está offline:
+
+<Steps>
+  <Step title="Salvamento no aparelho">
+    Ao salvar uma nova Msg Pos normal, ela fica guardada no próprio aparelho (banco de dados interno do navegador) e aparece a mensagem "Msg Pos salva neste aparelho. Ela será sincronizada automaticamente quando a internet voltar."
+  </Step>
+  <Step title="Identificação visual">
+    As mensagens guardadas no aparelho aparecem na lista com a indicação **Pendente de sincronização**. Elas podem ser editadas enquanto não forem enviadas.
+  </Step>
+  <Step title="Sincronização automática">
+    Quando a conexão retorna com a tela **Mensagem de Posição** aberta, o aplicativo envia automaticamente as mensagens pendentes, com os anexos.
+  </Step>
+  <Step title="Sincronização manual">
+    Com internet e mensagens pendentes, toque em **Sincronizar agora** no aviso de pendência. Durante o envio, o botão mostra **Sincronizando...**.
+  </Step>
+</Steps>
+
+<Note>
+  - Só é possível guardar uma Msg Pos por data no aparelho. Se a data já estiver pendente, aparece: "A Msg Pos de DD/MM/AAAA já está salva neste aparelho e aguarda sincronização."
+  - A Msg Pos FINAL (encerramento) e a edição de Msg Pos já sincronizadas exigem internet.
+  - O aplicativo não guarda cópia local das Msg Pos já enviadas. Sem internet, a lista mostra apenas as mensagens pendentes do aparelho.
+  - Se, na sincronização, já existir no servidor uma Msg Pos com a mesma data, o aplicativo não cria outra: apenas envia os anexos que faltarem e remove a pendência.
+</Note>
+
+### Avisos de offline exibidos
+
+| Situação | Mensagem exibida |
+| --- | --- |
+| Sem internet, sem pendentes | **Modo offline**: "Sem internet. Novas Msg Pos serão salvas neste aparelho." |
+| Sem internet, com pendentes | **Modo offline**: "X Msg Pos salva(s) neste aparelho aguardando sincronização." |
+| Com internet, com pendentes | **Sincronização pendente**: "X Msg Pos salva(s) neste aparelho aguardando sincronização." |
+| Tentativa de sincronizar offline | "Sem conexão com a internet. As Msg Pos continuam salvas neste aparelho." |
+| Falha na sincronização | "Algumas Msg Pos não puderam ser sincronizadas. Elas continuam salvas neste aparelho." |
+| Tentativa de editar offline | "Para editar uma Msg Pos já sincronizada, conecte-se à internet. Novas Msg Pos podem ser salvas normalmente offline." |
+| Tentativa de encerrar offline | "O encerramento da missão precisa de conexão com a internet. As Msg Pos normais podem continuar sendo salvas offline." |
+
+<Warning>
+  As mensagens pendentes ficam armazenadas apenas no aparelho atual. Não limpe os dados do navegador nem saia do aplicativo antes da sincronização: depois de sair, o novo login exige internet.
+</Warning>
+
+{/* CAPTURA: tela-msg-pos-offline */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** aviso de modo offline na lista de Msg Pos mostrando mensagens pendentes de sincronização.
+</Callout>
+
+## Bloqueios e regras de continuidade
+
+O sistema impõe uma sequência rigorosa de datas:
+
+- Você não pode pular datas. Se faltar a Msg Pos do dia 05, não pode registrar o dia 06 antes.
+- Mensagens futuras à data atual são bloqueadas.
+- Mensagens anteriores ao início da missão são bloqueadas.
+- Na lista, mensagens bloqueadas por pendência aparecem com opacidade reduzida e ícone de cadeado. O botão **Visualizar** fica desabilitado e, ao tentar editar, o aviso de bloqueio é exibido.
+- Para a Msg Pos FINAL, todas as Msg Pos normais desde o início da missão até o dia anterior ao encerramento devem estar registradas.
+
+### Mensagens de bloqueio
+
+| Situação | Mensagem exibida |
+| --- | --- |
+| Tentar visualizar/editar bloqueada | "Esta Msg Pos está bloqueada. Refaça primeiro a mensagem de DD MMM." |
+| Tentar registrar data com pendência anterior | "Não é possível registrar esta data. Existe uma Mensagem de Posição anterior pendente. Primeira data pendente: DD/MM/AAAA." |
+| Tentar encerrar com datas faltando | "Não é possível encerrar a missão nesta data. Faltam as seguintes Msg Pos anteriores ao encerramento: DD/MM/AAAA, DD/MM/AAAA." |
+| Tentar encerrar em data futura | "Não é permitido encerrar a missão em data futura." |
+| Tentar encerrar antes do início | "A data de encerramento não pode ser anterior ao início da missão." |
+| Missão já encerrada | "Esta missão já foi encerrada e não pode receber novas Mensagens de Posição." |
+
+## Navegação entre mensagens
+
+Na tela de pré-visualização, quando há múltiplas Msg Pos, você pode navegar entre elas usando as setas laterais ou deslizando o dedo na tela (gesto de swipe). A data da mensagem anterior ou seguinte é exibida abaixo de cada seta.
+
+{/* CAPTURA: tela-msg-pos-navegacao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de pré-visualização mostrando setas de navegação entre mensagens anteriores e seguintes.
+</Callout>

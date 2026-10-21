@@ -1,0 +1,116 @@
+---
+title: "Perfis de usuário e permissões"
+sidebarTitle: "Perfis e permissões"
+description: "Conheça os perfis do MSG POS AVEX, o escopo de cada um e o que cada perfil pode fazer no aplicativo."
+keywords:
+  - "perfis"
+  - "permissões"
+  - "Gestor Global"
+  - "Gestor CAvEx"
+  - "Gestor Local"
+  - "Administrador Local"
+  - "Usuário"
+---
+
+Cada usuário do MSG POS AVEX tem um perfil que define o que ele vê e o que pode fazer. O perfil aparece na página inicial, ao lado da identificação do usuário, sempre que for um perfil de gestão.
+
+## Perfis disponíveis
+
+<Columns cols={2}>
+  <Card title="Usuário" icon="user">
+    Perfil padrão dos aeronavegantes. Inicia missões, participa das missões em que é tripulante e registra Mensagens de Posição.
+  </Card>
+
+  <Card title="Administrador Local" icon="shield">
+    Administra a sua OMAvEx: acompanha as missões, mantém a base de usuários, redefine senhas e pode excluir missões.
+  </Card>
+
+  <Card title="Gestor Local" icon="shield-check">
+    Acompanha as missões da sua OMAvEx pela **Gestão de Missões**.
+  </Card>
+
+  <Card title="Gestor CAvEx" icon="compass">
+    Acompanha, somente em modo de leitura, as missões ativas de todas as OMAvEx.
+  </Card>
+
+  <Card title="Gestor Global" icon="crown">
+    Acesso completo: todas as OMAvEx, gestão de pessoal, concessão de funções e caixa de sugestões.
+  </Card>
+</Columns>
+
+<Note>
+  Todos os perfis de gestão também podem usar as funções operacionais do perfil **Usuário**, como iniciar missões e registrar Mensagens de Posição nas missões em que são tripulantes.
+</Note>
+
+## Escopo por OMAvEx
+
+| Perfil | OMAvEx que pode acompanhar |
+| --- | --- |
+| **Gestor Global** | Qualquer OMAvEx, escolhida no seletor de escopo (ou todas) |
+| **Gestor CAvEx** | Qualquer OMAvEx, escolhida no seletor (somente missões ativas, em modo de leitura) |
+| **Gestor Local** | Somente a OMAvEx em que exerce a função |
+| **Administrador Local** | Somente a OMAvEx em que exerce a função |
+| **Usuário** | Não acessa a Área de Gestão |
+
+Para o Gestor Local e o Administrador Local, a Área de Gestão informa: "Seu acesso administrativo é limitado a esta OMAvEx."
+
+## Matriz de permissões
+
+| Ação | Usuário | Adm. Local | Gestor Local | Gestor CAvEx | Gestor Global |
+| --- | --- | --- | --- | --- | --- |
+| Iniciar missão | Sim | Sim | Sim | Sim | Sim |
+| Registrar Mensagens de Posição e editar missões em que é tripulante | Sim | Sim | Sim | Sim | Sim |
+| Enviar sugestão em **Contatos e Sugestões** | Sim | Sim | Sim | Sim | Sim |
+| Acessar **Gestão de Missões** | Não | Sim | Sim | Sim | Sim |
+| Excluir missões (**Excluir Missão**) | Não | Sim | Não | Não | Sim |
+| Acessar **Gestão de Pessoal** | Não | Sim | Não | Não | Sim |
+| Atualizar a base de usuários por planilha | Não | Sim | Não | Não | Sim |
+| Editar e-mail e celular de usuários e **Resetar senha** | Não | Sim | Não | Não | Sim |
+| Conceder e remover funções de gestão | Não | Não | Não | Não | Sim |
+| Ler a **Caixa de sugestões** | Não | Não | Não | Não | Sim |
+
+<Info>
+  A Área de Gestão exige conexão com a internet. Veja os procedimentos em [Administração e gerenciamento de usuários](/gestao/administracao).
+</Info>
+
+{/* CONFIRMAR: o servidor também autoriza o Gestor Global (qualquer missão) e o Gestor Local ou Administrador Local (missões da sua OMAvEx) a alterar missões em que não são tripulantes, mas a página inicial lista apenas as missões em que o usuário é tripulante. Confirmar se há outro caminho na interface para essa alteração. */}
+
+## Tripulantes autorizados da missão
+
+O acesso operacional a uma missão é definido pelos trigramas informados no formulário da missão, e não apenas pelo perfil.
+
+- Quem inicia a missão é incluído automaticamente como tripulante.
+- Cada trigrama informado precisa existir, estar ativo e pertencer à OMAvEx da missão.
+- Somente os tripulantes veem a missão na própria página inicial e podem registrar Mensagens de Posição nela.
+
+Os campos e as mensagens de validação estão em [Cadastro e edição de informações da missão](/missoes/cadastro-e-edicao).
+
+## Como as funções são concedidas
+
+Somente o **Gestor Global** vê os botões de concessão e remoção de funções, no cadastro de um usuário da OMAvEx selecionada.
+
+| Função | Quem concede | Observações |
+| --- | --- | --- |
+| Gestor Local | Gestor Global | Vinculada a uma OMAvEx |
+| Administrador Local | Gestor Global | Vinculada a uma OMAvEx |
+| Gestor CAvEx | Gestor Global | Acesso somente de leitura ao acompanhamento das missões ativas de todas as OMAvEx |
+| Gestor Global | Gestor Global | Até 3 Gestores Globais ao mesmo tempo |
+
+### Restrições
+
+- O usuário precisa ter **e-mail** e **celular** cadastrados antes de receber uma função de gestão. Caso contrário, aparece o aviso "Não foi possível definir a função".
+- Os botões **Tornar Gestor CAvEx** e **Tornar Gestor Global** não aparecem no próprio cadastro do Gestor Global.
+- "O último Gestor Global do sistema não pode ser removido."
+- Toda concessão ou remoção pede confirmação e fica registrada no **Histórico Administrativo**.
+
+{/* CAPTURA: perfil-botoes-funcoes */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** cadastro de um usuário na **Gestão de Pessoal**, visto por um Gestor Global, com os botões **Tornar Gestor Local**, **Tornar Administrador Local**, **Tornar Gestor CAvEx** e **Tornar Gestor Global**.
+</Callout>
+
+{/* CAPTURA: pagina-inicial-perfil-gestao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** página inicial de um usuário com perfil de gestão, mostrando a identificação do perfil e os botões **Gestão de Missões** e **Gestão de Pessoal**.
+</Callout>

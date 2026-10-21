@@ -1,0 +1,130 @@
+---
+title: "Criação e gerenciamento de missões"
+sidebarTitle: "Criação e gerenciamento"
+description: "Como iniciar uma missão, selecionar entre missões ativas e acompanhar o ciclo de vida da missão no MSG POS AVEX."
+keywords:
+  - "missão"
+  - "iniciar missão"
+  - "missões ativas"
+  - "tripulantes"
+  - "ciclo de vida"
+---
+
+A missão é o registro central do MSG POS AVEX: todas as Mensagens de Posição, horas de voo e abastecimentos ficam vinculados a ela. Esta página explica como iniciar uma missão, como alternar entre missões ativas e quais são as etapas do ciclo de vida.
+
+## Ciclo de vida da missão
+
+| Situação | Como a missão chega a essa situação | Onde aparece |
+| --- | --- | --- |
+| **Em andamento** (ativa) | Ao tocar em **Iniciar Missão** e salvar o formulário | Página inicial (**Missão Ativa** ou **Missões Ativas**) |
+| **Encerrada** | Ao registrar a Mensagem de Posição final | **Missões Anteriores** |
+| **Cancelada** | Ao cancelar pela tela **Editar Missão**, antes de qualquer Mensagem de Posição | **Missões Anteriores** |
+
+Missões encerradas ou canceladas podem ser reabertas pela tela **Missões Anteriores**. Veja [Consulta e histórico de missões](/missoes/consulta-e-historico) e [Encerramento e cancelamento de missões](/missoes/encerramento-e-cancelamento).
+
+## Iniciar uma missão
+
+<Info>
+  Qualquer usuário autenticado vê o botão **Iniciar Missão** na página inicial. Quem inicia a missão passa a fazer parte dela automaticamente, junto com os tripulantes informados no formulário.
+</Info>
+
+<Steps>
+  <Step title="Abra a tela Iniciar Missão">
+    Na página inicial, toque em **Iniciar Missão** ("Registrar nova missão de aeronave").
+  </Step>
+  <Step title="Preencha o formulário">
+    Informe os dados da aeronave, da ordem de referência, do período, dos tripulantes, da manutenção e das horas de voo. A descrição de cada campo está em [Cadastro e edição de informações da missão](/missoes/cadastro-e-edicao).
+  </Step>
+  <Step title="Salve a missão">
+    Toque em **Iniciar Missão**. Durante o envio, o botão muda para **Salvando...** e aparece a mensagem "Salvando dados da missão...".
+  </Step>
+  <Step title="Confira a página inicial">
+    Após o salvamento, você volta para a página inicial e a nova missão aparece como missão ativa.
+  </Step>
+</Steps>
+
+{/* CAPTURA: iniciar-missao-formulario */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela **Iniciar Missão** com o formulário preenchido e o botão **Iniciar Missão** no final.
+</Callout>
+
+<Warning>
+  Iniciar uma missão exige conexão com a internet. Sem conexão, o salvamento falha e o sistema exibe a mensagem de erro retornada (por exemplo, "Erro ao salvar a missão. Tente novamente."). A missão não fica guardada para envio posterior.
+</Warning>
+
+### Regras verificadas ao salvar
+
+| Regra | Mensagem exibida |
+| --- | --- |
+| Cada aeronave só pode ter uma missão ativa | "A EXB-1234 já possui uma missão ativa. Encerre ou cancele a missão atual antes de iniciar outra." |
+| A OMAvEx da missão é obrigatória | "Informe a OMAvEx da missão." |
+| Todos os trigramas informados devem existir | "Trigrama(s) não encontrado(s): ..." |
+| Os tripulantes devem estar ativos | "Usuário(s) inativo(s): ..." |
+| Os tripulantes devem pertencer à OMAvEx da missão | "Os seguintes usuários não pertencem à OMAvEx ...: ..." |
+| A aeronave de uma OMA não pode ser usada por outra missão | "Esta aeronave da OMA já foi selecionada por outra missão. Consulte novamente a OMA e selecione outra aeronave." |
+
+<Tip>
+  A verificação de aeronave com missão ativa acontece já durante o preenchimento do campo da aeronave, antes do envio.
+</Tip>
+
+## Quem tem acesso à missão
+
+A missão fica disponível na página inicial de quem a iniciou e de cada tripulante informado no campo de trigramas autorizados. Esses usuários podem registrar Mensagens de Posição e editar a missão.
+
+Os perfis de gestão acompanham as missões da sua área pela **Gestão de Missões**, em modo de acompanhamento. Veja [Administração e gerenciamento de usuários](/gestao/administracao) e [Perfis de usuário e permissões](/primeiros-passos/perfis-e-permissoes).
+
+## Várias missões ativas
+
+Você pode participar de mais de uma missão ativa ao mesmo tempo (uma por aeronave).
+
+- Com **uma** missão ativa, a página inicial mostra o cartão **Missão Ativa**.
+- Com **duas ou mais**, aparece também a seção **Missões Ativas** ("Selecione a missão que deseja acessar."), e a missão em uso recebe o indicador **Selecionada**.
+
+<Steps>
+  <Step title="Escolha a missão">
+    Na seção **Missões Ativas**, toque na missão desejada.
+  </Step>
+  <Step title="Trabalhe na missão selecionada">
+    O aplicativo abre a tela **Mensagem de Posição** da missão escolhida. Ao voltar, os painéis da página inicial passam a mostrar os dados dessa missão.
+  </Step>
+</Steps>
+
+{/* CAPTURA: missoes-ativas-selecao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção **Missões Ativas** com duas missões e o indicador **Selecionada** em uma delas.
+</Callout>
+
+## Abrir a edição da missão
+
+<Steps>
+  <Step title="Abra a missão">
+    Na página inicial, toque no cartão **Missão Ativa** ou no botão **Mensagem de Posição**.
+  </Step>
+  <Step title="Toque em Editar missão">
+    Na tela **Mensagem de Posição**, toque em **Editar missão**. O aplicativo verifica quantas Mensagens de Posição a missão já possui e abre a tela **Editar Missão**.
+  </Step>
+</Steps>
+
+Se essa verificação falhar (por exemplo, sem internet), aparece a mensagem "Não foi possível verificar as Mensagens de Posição da missão." Após salvar a edição, você retorna à tela **Mensagem de Posição**.
+
+## Páginas relacionadas
+
+<Columns cols={2}>
+  <Card title="Cadastro e edição" icon="pen-to-square" href="/missoes/cadastro-e-edicao">
+    Campos do formulário, validações e regras de edição.
+  </Card>
+
+  <Card title="Mensagens de Posição" icon="message" href="/mensagens/criacao">
+    Registro diário da situação da missão.
+  </Card>
+
+  <Card title="Consulta e histórico" icon="clock-rotate-left" href="/missoes/consulta-e-historico">
+    Missões encerradas, canceladas e reabertura.
+  </Card>
+
+  <Card title="Encerramento e cancelamento" icon="flag-checkered" href="/missoes/encerramento-e-cancelamento">
+    Como finalizar ou cancelar uma missão.
+  </Card>
+</Columns>

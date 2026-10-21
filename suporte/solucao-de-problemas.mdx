@@ -1,0 +1,251 @@
+---
+title: "Solução de problemas e perguntas frequentes"
+sidebarTitle: "Solução de problemas"
+description: "Respostas para dúvidas comuns, mensagens de erro e como usar o MSG POS AVEX em condições de conectividade limitada."
+keywords:
+  - "FAQ"
+  - "erro"
+  - "offline"
+  - "internet"
+  - "sincronização"
+  - "suporte"
+---
+
+Esta página reúne as situações mais comuns encontradas no uso do MSG POS AVEX, com orientações baseadas nas mensagens reais exibidas pelo aplicativo.
+
+## Uso sem conexão com a internet
+
+O MSG POS AVEX funciona parcialmente offline. Entenda o que pode ser feito sem internet e o que exige conexão.
+
+### O que funciona offline
+
+<Info>
+  O uso offline só é possível se você já entrou no aplicativo com internet neste aparelho e não saiu da sessão depois disso.
+</Info>
+
+- **Abrir o aplicativo e ver as missões ativas**: os dados do usuário e as missões ativas ficam guardados no aparelho após o último acesso com internet.
+- **Criar Mensagens de Posição**: você pode preencher e salvar Msg Pos normal (não FINAL) mesmo sem internet. Elas ficam guardadas no aparelho, aguardando sincronização.
+- **Editar Msg Pos ainda não sincronizadas**: mensagens salvas offline podem ser editadas antes da sincronização.
+
+<Note>
+  O aplicativo não guarda cópia local das Msg Pos já enviadas nem das **Missões Anteriores**. Essas consultas exigem internet.
+</Note>
+
+### O que exige conexão com a internet
+
+| Funcionalidade | Mensagem exibida sem internet |
+| --- | --- |
+| Cancelamento de missão | "O cancelamento da missão precisa de conexão com a internet." |
+| Encerramento de missão (Msg Pos FINAL) | "O encerramento da missão precisa de conexão com a internet. As Msg Pos normais podem continuar sendo salvas offline." |
+| Edição de Msg Pos já sincronizada | "Para editar uma Msg Pos já sincronizada, conecte-se à internet. Novas Msg Pos podem ser salvas normalmente offline." |
+| Administração e gestão | "A administração requer conexão com a internet." |
+| Login (entrar no aplicativo) e iniciar missão | O login e a criação de missão dependem do servidor e falham sem conexão |
+| Sincronização de mensagens pendentes | "Sem conexão com a internet. As Msg Pos continuam salvas neste aparelho." |
+
+### Fila de mensagens pendentes e sincronização
+
+Quando você salva uma Msg Pos sem internet, o aplicativo guarda a mensagem no banco de dados interno do navegador (IndexedDB). Na lista, ela aparece como **Pendente de sincronização**.
+
+- **Sincronização automática**: quando o aparelho reconecta à internet com a tela **Mensagem de Posição** aberta, o aplicativo tenta enviar as mensagens pendentes, com os anexos.
+- **Sincronização manual**: no aviso **Sincronização pendente** da tela **Mensagem de Posição**, toque em **Sincronizar agora**.
+- **Falhas**: se alguma mensagem não for enviada, aparece "Algumas Msg Pos não puderam ser sincronizadas. Elas continuam salvas neste aparelho." A mensagem continua pendente para uma nova tentativa.
+- **Mesma data já enviada**: se o servidor já tiver uma Msg Pos com a mesma data, o aplicativo não cria outra; envia apenas os anexos que faltarem e remove a pendência.
+
+<Warning>
+  Se a sincronização falhar repetidamente, confira a conexão e tente **Sincronizar agora** novamente. Não saia do aplicativo nem limpe os dados do navegador enquanto houver mensagens pendentes. Se o problema continuar, procure o suporte.
+</Warning>
+
+{/* CAPTURA: tela-sincronizacao-offline */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de Msg Pos mostrando o indicador de mensagens pendentes offline e o botão de sincronização manual.
+</Callout>
+
+## Mensagens de erro comuns
+
+A tabela abaixo lista mensagens de erro reais do aplicativo, suas causas prováveis e o que você pode fazer.
+
+| Mensagem | Causa provável | O que fazer |
+| --- | --- | --- |
+| "Sessão não validada. Entre novamente com internet." | A sessão expirou ou não foi aceita pelo servidor | Conecte-se à internet e faça login novamente com seu trigrama e senha |
+| "Erro ao realizar login." | Credenciais incorretas ou falha no servidor | Verifique seu trigrama e senha. Se o problema persistir, contate o suporte |
+| "Erro ao salvar a missão. Tente novamente." | Falha de conectividade ou validação no servidor | Verifique a conexão, confira os campos obrigatórios e tente novamente |
+| "Erro ao atualizar a missão. Tente novamente." | Falha na comunicação com o servidor durante a edição | Verifique a internet e tente salvar novamente |
+| "Não foi possível verificar as Mensagens de Posição da missão." | Falha ao carregar dados do servidor | Verifique a conexão e recarregue a tela |
+| "Não foi possível carregar os anexos desta mensagem." | Falha ao buscar arquivos vinculados à Msg Pos | Verifique a conexão. Os anexos podem estar disponíveis ao reconectar |
+| "Erro ao carregar mensagens." | Falha geral no carregamento da lista de Msg Pos | Verifique a conexão e tente recarregar |
+| "Existem campos obrigatórios não preenchidos." | Validação do formulário de Msg Pos ou missão | Preencha todos os campos marcados como obrigatórios |
+| "Não foi possível salvar a Mensagem de Posição. Tente novamente." | Erro no envio da Msg Pos ao servidor | Verifique a conexão e tente enviar novamente. A mensagem pode ter sido salva offline |
+| "Erro inesperado ao salvar. Tente novamente." | Erro não identificado durante o salvamento | Tente novamente. Se persistir, reinicie o aplicativo |
+| "Não foi possível gerar a prévia da Mensagem de Posição FINAL." | Falha na montagem da prévia de encerramento | Verifique os dados preenchidos e tente novamente |
+| "Não foi possível salvar a Mensagem de Posição FINAL e encerrar a missão. Tente novamente." | Falha no processo de encerramento | Verifique a conexão, confira se todas as Msg Pos diárias estão preenchidas e tente novamente |
+| "Erro ao carregar missões anteriores / canceladas." | Falha ao buscar o histórico de missões | Verifique a conexão e tente recarregar a lista |
+| "Erro ao carregar contatos de suporte." | Falha ao buscar dados da tela de suporte | Verifique a conexão. Os contatos podem não estar disponíveis offline |
+| "Não foi possível enviar a sugestão." | Falha ao enviar mensagem para a caixa de sugestões | Verifique a conexão e tente enviar novamente |
+| "Erro ao carregar sugestões." | Falha ao abrir a caixa de sugestões recebidas (Gestor Global) | Verifique a conexão |
+| "Não foi possível marcar como lida." | Falha ao atualizar o status de leitura de uma sugestão | Verifique a conexão |
+| "Não foi possível importar a planilha." | Erro no processamento do arquivo Excel na administração | Verifique se o arquivo está no formato XLSX ou XLS e tente novamente |
+| "Selecione uma planilha Excel no formato XLSX ou XLS." | Arquivo com formato inválido para importação de usuários | Converta o arquivo para um dos formatos aceitos |
+| "Erro ao criar a nova senha." | Falha na alteração de senha durante o primeiro acesso | Verifique se a senha tem pelo menos 6 caracteres e se as senhas coincidem |
+| "Erro ao atualizar os dados." | Falha ao salvar alterações no perfil | Verifique a conexão e tente novamente |
+| "Não foi possível recuperar a senha." | Falha no processo de recuperação de senha | Verifique se o CP e o PREC-CP estão corretos e tente novamente |
+| "Não foi possível copiar a mensagem." | Falha ao copiar texto para a área de transferência | Tente usar outra opção de compartilhamento (WhatsApp, PDF) |
+| "Não foi possível gerar o PDF. Tente novamente." | Falha na geração do PDF da Msg Pos ou cancelamento | Tente novamente ou use a opção de copiar o texto |
+| "Compartilhamento nativo não disponível neste dispositivo." | O navegador ou sistema operacional não suporta compartilhamento nativo | Use as opções de copiar, WhatsApp ou PDF |
+| "Missão encerrada, mas houve erro ao enviar anexo CEPA" | A missão foi encerrada, mas um ou mais anexos não foram enviados | Os anexos podem ser adicionados posteriormente consultando a missão encerrada |
+
+{/* CAPTURA: tela-erro-banner */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** exemplo de banner de erro vermelho exibido no topo da tela com mensagem e botão de fechar (X).
+</Callout>
+
+## Permissão de localização negada
+
+O MSG POS AVEX utiliza a localização do dispositivo para georreferenciar as Mensagens de Posição. Isso permite que os gestores acompanhem as missões no mapa operacional.
+
+### Como funciona a geolocalização
+
+- **Localização manual**: se você informar latitude e longitude manualmente no formulário de Msg Pos, esses valores são usados.
+- **Localização automática**: se não houver coordenadas manuais, o aplicativo tenta obter a localização do GPS do dispositivo.
+- **Alternativa automática**: se o GPS não responder ou a permissão for negada, o aplicativo usa a última localização válida guardada no aparelho. Se não houver nenhuma, usa uma coordenada de contingência definida pelo sistema.
+
+### O que fazer se a localização não for capturada
+
+1. Verifique se o GPS do dispositivo está ativado.
+2. Confira se o navegador tem permissão para acessar a localização (geralmente nas configurações do site/navegador).
+3. Se a permissão foi negada permanentemente, você pode redefini-la nas configurações do navegador ou do sistema operacional.
+4. Como alternativa, preencha manualmente os campos de latitude e longitude no formulário de Msg Pos.
+
+<Note>
+  A geolocalização automática não é incluída no texto da Msg Pos compartilhada. Ela é utilizada internamente pelo sistema conforme o nível de acesso de cada usuário.
+</Note>
+
+{/* CAPTURA: tela-consentimento-localizacao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de consentimento de localização exibida após o login, com o botão "Continuar e autorizar localização".
+</Callout>
+
+## Sessão expirada
+
+O aplicativo mantém sua sessão guardada no navegador. Quando a sessão expira ou não é aceita pelo servidor:
+
+- Você verá a mensagem "Sessão não validada. Entre novamente com internet."
+- O aplicativo descarta automaticamente a sessão guardada.
+- É necessário fazer login novamente com trigrama e senha.
+
+### Para evitar perda de sessão
+
+- Evite limpar os dados de navegação (cookies e armazenamento local) do navegador enquanto estiver usando o aplicativo.
+- Se usar o aplicativo em modo anônimo, a sessão será perdida ao fechar a aba.
+
+## Instalação do aplicativo (PWA)
+
+O MSG POS AVEX é um Progressive Web App (PWA). Isso significa que você pode instalá-lo na tela inicial do seu dispositivo, funcionando como um aplicativo nativo.
+
+### Como instalar
+
+<Steps>
+  <Step title="Acesse o aplicativo pelo navegador">
+    Abra o endereço do MSG POS AVEX no navegador do seu dispositivo (Chrome, Edge, Safari).
+  </Step>
+  <Step title="Adicione à tela inicial">
+    No Android/Chrome: toque no menu (três pontos) e selecione "Adicionar à tela inicial". No iOS/Safari: toque no botão de compartilhar e selecione "Adicionar à Tela de Início".
+  </Step>
+  <Step title="Use o ícone instalado">
+    O aplicativo abrirá em tela cheia, sem a barra de endereço do navegador.
+  </Step>
+</Steps>
+
+### Vantagens do PWA
+
+- Funciona offline para funcionalidades compatíveis.
+- Recebe atualizações automaticamente quando houver nova versão.
+- Ícone próprio na tela inicial.
+- Não requer instalação por loja de aplicativos.
+
+<Info>
+  O aplicativo armazena dados no aparelho usando IndexedDB (mensagens pendentes) e localStorage (sessão, missão selecionada e missões ativas). Não exclua os dados do site se quiser manter as mensagens offline não sincronizadas.
+</Info>
+
+{/* CAPTURA: tela-instalacao-pwa */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** exemplo de prompt de instalação PWA exibido pelo navegador Chrome no Android.
+</Callout>
+
+## Perguntas frequentes
+
+<AccordionGroup>
+  <Accordion title="Posso usar o aplicativo sem internet?">
+    Sim, parcialmente, desde que você já tenha entrado com internet neste aparelho. Você pode criar Mensagens de Posição normais (não FINAL) offline e editá-las enquanto estiverem pendentes. Elas ficam salvas no aparelho e são enviadas quando a internet voltar. Login, início, encerramento e cancelamento de missão, administração, consulta de Missões Anteriores e edição de Msg Pos já sincronizadas exigem conexão.
+  </Accordion>
+
+  <Accordion title="O que acontece se eu tentar encerrar uma missão sem internet?">
+    O aplicativo exibe a mensagem "O encerramento da missão precisa de conexão com a internet. As Msg Pos normais podem continuar sendo salvas offline." Você pode continuar registrando Msg Pos normais offline e tentar o encerramento novamente quando reconectar.
+  </Accordion>
+
+  <Accordion title="Posso cancelar uma missão que já tem Msg Pos?">
+    Não. O aplicativo exibe: "Esta missão já possui Mensagem de Posição e não pode ser cancelada." Se necessário, encerre a missão normalmente com a Msg Pos FINAL ou consulte o suporte.
+  </Accordion>
+
+  <Accordion title="Onde ficam salvas as mensagens offline?">
+    As mensagens pendentes ficam armazenadas no IndexedDB do navegador, um banco de dados interno do dispositivo. A sessão, a missão selecionada e a lista de missões ativas ficam no localStorage. Esses dados permanecem mesmo se você fechar o navegador.
+  </Accordion>
+
+  <Accordion title="Como sei se há mensagens pendentes para sincronizar?">
+    Na tela **Mensagem de Posição** da missão, o aviso **Modo offline** ou **Sincronização pendente** mostra quantas mensagens estão salvas no aparelho. Com internet, toque em **Sincronizar agora** para enviar imediatamente.
+  </Accordion>
+
+  <Accordion title="O que acontece se eu limpar os dados do navegador?">
+    Você perderá a sessão (precisará fazer login novamente), o cache de missões e todas as mensagens pendentes não sincronizadas. Evite limpar os dados do site enquanto houver mensagens offline.
+  </Accordion>
+
+  <Accordion title="Posso reabrir uma missão encerrada ou cancelada?">
+    Sim. Acesse **Missões Anteriores**, localize a missão e use a opção de reabrir. Missões encerradas perdem a Msg Pos FINAL. Missões canceladas voltam ao status ativo. Você não pode reabrir se já estiver vinculado a outra missão ativa.
+  </Accordion>
+
+  <Accordion title="Por que o aplicativo pede acesso à minha localização?">
+    A localização é usada para georreferenciar as Msg Pos no mapa operacional, permitindo que os gestores acompanhem as missões. A localização não aparece no texto compartilhado da mensagem.
+  </Accordion>
+
+  <Accordion title="O que fazer se o PDF não for gerado?">
+    Tente novamente usando o botão "Gerar PDF". Se o problema persistir, use a opção "Copiar Mensagem" e cole o texto em outro aplicativo para gerar o PDF externamente.
+  </Accordion>
+
+  <Accordion title="Como recuperar minha senha?">
+    Na tela de login, toque em "Recuperar senha". Informe seu CP, PREC-CP e a nova senha (mínimo 6 caracteres). Se houver erro, verifique se os dados estão corretos.
+  </Accordion>
+</AccordionGroup>
+
+## Como pedir ajuda
+
+Se você não encontrou a resposta para sua dúvida nesta página, utilize os canais de suporte disponíveis no aplicativo:
+
+<Steps>
+  <Step title="Acesse a página inicial">
+    Na página inicial, toque no ícone de fone de ouvido no canto superior direito.
+  </Step>
+  <Step title="Abra Contatos e Sugestões">
+    Selecione a opção para abrir a tela de suporte.
+  </Step>
+  <Step title="Envie uma sugestão">
+    Escreva sua dúvida ou sugestão no campo indicado e toque em **Enviar sugestão**. O texto deve ter pelo menos 5 caracteres.
+  </Step>
+  <Step title="Consulte os contatos de gestores">
+    Na mesma tela, você encontra telefones e e-mails dos gestores do sistema. Toque no número de telefone para ligar diretamente.
+  </Step>
+</Steps>
+
+<Info>
+  O Gestor Global também dispõe de uma caixa de sugestões recebidas, onde pode acompanhar as demandas dos usuários.
+</Info>
+
+Para mais informações sobre a navegação e recursos da página inicial, consulte [Página inicial e navegação](/primeiros-passos/pagina-inicial).
+
+{/* CAPTURA: tela-contatos-suporte */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de Contatos e Sugestões com campo de texto para sugestão, botão "Enviar sugestão" e lista de contatos de gestores com telefone e e-mail.
+</Callout>

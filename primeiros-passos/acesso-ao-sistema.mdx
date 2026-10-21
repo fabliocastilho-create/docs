@@ -1,0 +1,169 @@
+---
+title: "Acesso ao sistema e primeiro acesso"
+sidebarTitle: "Acesso ao sistema"
+description: "Como fazer login, recuperar senha, realizar o primeiro acesso e sair do MSG POS AVEX."
+keywords:
+  - "login"
+  - "primeiro acesso"
+  - "senha"
+  - "trigrama"
+  - "recuperação de senha"
+---
+
+O acesso ao MSG POS AVEX é feito por meio de trigrama e senha. Após a autenticação, o sistema verifica se é necessário completar o primeiro acesso ou aceitar o uso da localização. A configuração inicial do sistema é feita por administradores com perfil de gestão. Para mais detalhes sobre permissões, consulte [Perfis de usuário e permissões](/primeiros-passos/perfis-e-permissoes).
+
+{/* CAPTURA: tela-login-completa */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de login do MSG POS AVEX com campos de trigrama, senha, botão Entrar e link "Esqueci minha senha".
+</Callout>
+
+## Tela de login
+
+Na tela de login, você encontra os seguintes campos e botões:
+
+| Campo | Obrigatório | Regra/validação | Mensagem |
+| --- | --- | --- | --- |
+| **Trigrama** | Sim | 3 caracteres, letras maiúsculas | "Ex: FBC" |
+| **Senha** | Sim | Mínimo de 6 caracteres | "Digite sua senha" |
+
+<Steps>
+  <Step title="Informe o trigrama">
+    Digite seu trigrama no campo **Trigrama**. O sistema converte automaticamente para letras maiúsculas e limita a 3 caracteres.
+  </Step>
+  <Step title="Informe a senha">
+    Digite sua senha no campo **Senha**.
+  </Step>
+  <Step title="Toque em Entrar">
+    Toque no botão **Entrar**. O sistema valida as credenciais e redireciona para a próxima etapa.
+  </Step>
+</Steps>
+
+<Info>
+  No primeiro acesso, utilize seu trigrama e seu CP como senha provisória.
+</Info>
+
+### Mensagens de erro comuns
+
+| Situação | Mensagem do sistema |
+| --- | --- |
+| Credenciais inválidas | "Erro ao realizar login." |
+| Campos vazios | O botão **Entrar** fica desabilitado até que ambos os campos sejam preenchidos. |
+| Sessão expirada sem internet | "Sessão não validada. Entre novamente com internet." |
+
+### Recuperar senha
+
+Se você esqueceu a senha, toque no botão **Esqueci minha senha** na tela de login.
+
+<Steps>
+  <Step title="Acesse a recuperação">
+    Toque em **Esqueci minha senha**. O sistema exibe o formulário de recuperação.
+  </Step>
+  <Step title="Informe CP e PREC-CP">
+    Preencha os campos **CP** e **PREC-CP** com números apenas. No campo PREC-CP, digite sem hífen e sem indicador de dependente.
+  </Step>
+  <Step title="Cadastre nova senha">
+    Informe a **Nova senha** (mínimo de 6 caracteres) e a **Confirmar nova senha**.
+  </Step>
+  <Step title="Redefinir senha">
+    Toque em **Redefinir senha**. Após a confirmação, o sistema exibe a mensagem "Senha redefinida com sucesso" e você retorna à tela de login.
+  </Step>
+</Steps>
+
+| Campo | Obrigatório | Regra/validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **CP** | Sim | Somente números | "Informe o CP e o PREC-CP." |
+| **PREC-CP** | Sim | Somente números, sem hífen | "Informe o CP e o PREC-CP." |
+| **Nova senha** | Sim | Mínimo 6 caracteres | "A nova senha deve possuir pelo menos 6 caracteres." |
+| **Confirmar nova senha** | Sim | Deve ser igual à nova senha | "As senhas informadas não são iguais." |
+
+## Primeiro acesso
+
+Quando um usuário é cadastrado no sistema, o primeiro login exibe a tela de **Primeiro Acesso**. Nela, você deve confirmar seus dados cadastrais e criar uma senha definitiva.
+
+<Steps>
+  <Step title="Confirme seus dados">
+    Revise os campos de dados pessoais. Os campos **Trigrama** e **Nome** são obrigatórios. Toque em **Confirmar Dados** para prosseguir.
+  </Step>
+  <Step title="Crie uma senha definitiva">
+    Informe a **Nova senha** (mínimo de 6 caracteres) e a **Confirmar nova senha**.
+  </Step>
+  <Step title="Criar Nova Senha">
+    Toque em **Criar Nova Senha**. Após a criação, a sessão é encerrada e você deve entrar novamente com o trigrama e a nova senha.
+  </Step>
+</Steps>
+
+### Campos do primeiro acesso
+
+| Campo | Obrigatório | Observação |
+| --- | --- | --- |
+| **Posto/Graduação** | Não |  |
+| **Arma/Quadro/Serviço** | Não |  |
+| **Trigrama** | Sim | Convertido para maiúsculas |
+| **Nome** | Sim |  |
+| **Nome de Guerra** | Não |  |
+| **Função de Bordo** | Não |  |
+| **Especialidade Aviação** | Não |  |
+| **Aeronave Atual** | Não | Convertido para maiúsculas |
+| **Situação/Vínculo** | Não |  |
+| **OM Classificação** | Não |  |
+| **OM à Disposição** | Não |  |
+| **OMAvEx** | Não |  |
+
+### Regras de senha
+
+- Mínimo de 6 caracteres.
+- A senha de confirmação deve ser idêntica à nova senha.
+- Após a troca no primeiro acesso, o aplicativo limpa os dados guardados no aparelho e retorna à tela de login.
+
+{/* CAPTURA: tela-primeiro-acesso-dados */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de primeiro acesso com formulário de dados pessoais e indicador de etapas (Dados / Nova senha).
+</Callout>
+
+## Aviso de uso da localização
+
+Após o login (ou quando o usuário ainda não aceitou), o sistema exibe o aviso de uso da localização.
+
+O MSG POS AVEX utiliza a localização do dispositivo para georreferenciar as Mensagens de Posição e permitir o acompanhamento das missões pelos gestores autorizados. A geolocalização automática não é incluída no texto da Msg Pos compartilhada e é utilizada no sistema conforme o nível de acesso de cada usuário.
+
+Para continuar, toque em **Continuar e autorizar localização**. O navegador solicitará a permissão de geolocalização. Para mais detalhes sobre o mapa operacional, consulte [Mapa operacional e localização](/mensagens/mapa-e-localizacao).
+
+{/* CAPTURA: tela-autorizacao-localizacao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de autorização de uso da localização com botão "Continuar e autorizar localização".
+</Callout>
+
+## Acesso sem internet
+
+O MSG POS AVEX funciona parcialmente sem conexão com a internet. O login exige internet. Depois de entrar com conexão, o aplicativo guarda no aparelho:
+
+- Os dados do usuário autenticado.
+- A missão selecionada e a lista de missões ativas.
+
+Se o aparelho ficar sem internet, o aplicativo abre com esses dados guardados, desde que você não tenha saído da sessão, seu usuário esteja ativo e o primeiro acesso já tenha sido concluído.
+
+<Warning>
+  Se o servidor recusar a sessão quando a conexão voltar (por exemplo, sessão expirada), o aplicativo descarta os dados guardados e exibe "Sessão não validada. Entre novamente com internet."
+</Warning>
+
+<Tip>
+  Se houver Mensagens de Posição salvas offline aguardando sincronização, não saia do aplicativo enquanto estiver sem internet. Depois de sair, é preciso conexão para entrar novamente.
+</Tip>
+
+A administração do sistema requer conexão com a internet. Se você tentar acessar a tela de gestão offline, o sistema exibe a mensagem "A administração requer conexão com a internet."
+
+## Sair do sistema
+
+Para encerrar sua sessão, toque no ícone de saída (log out) no cabeçalho da [página inicial](/primeiros-passos/pagina-inicial). O sistema:
+
+1. Encerra a sessão no servidor (se houver conexão).
+2. Remove do aparelho a sessão, os dados do usuário e a missão selecionada.
+3. Mantém no aparelho as Mensagens de Posição pendentes de sincronização, Para enviá-las, entre novamente com internet, abra a tela **Mensagem de Posição** da missão e toque em **Sincronizar agora**.
+4. Retorna à tela de login.
+
+<Note>
+  A configuração inicial do sistema é feita por administradores com perfil de gestão. Para detalhes sobre administração, consulte [Administração e gerenciamento de usuários](/gestao/administracao).
+</Note>

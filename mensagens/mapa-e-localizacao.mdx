@@ -1,0 +1,278 @@
+---
+title: "Mapa operacional e localização"
+sidebarTitle: "Mapa e localização"
+description: "Como funciona a geolocalização no MSG POS AVEX, desde a autorização do dispositivo até o mapa operacional de missões."
+keywords:
+  - "mapa"
+  - "localização"
+  - "geolocalização"
+  - "OpenStreetMap"
+  - "Leaflet"
+  - "GPS"
+---
+
+O MSG POS AVEX utiliza a localização do dispositivo para georreferenciar as Mensagens de Posição e permitir o acompanhamento das missões pelos gestores autorizados. Esta página explica como autorizar o acesso à localização, como o seletor de mapa funciona no formulário de mensagem e como interpretar o mapa operacional.
+
+<Info>
+  **Quem vê o mapa operacional:** apenas os quatro perfis de gestão (Gestor Global, Gestor CAvEx, Gestor Local e Administrador Local) têm acesso ao mapa, na tela **Administração**.
+</Info>
+
+## Autorização de localização
+
+Na primeira vez que você acessa o aplicativo, o sistema apresenta a tela **Uso da localização**. Você deve tocar em **Continuar e autorizar localização** para prosseguir.
+
+<Steps>
+  <Step title="Leia o aviso de privacidade">
+    O app informa que a geolocalização é usada para georreferenciar as Msg Pos e permitir o acompanhamento pelos gestores autorizados. A localização automática não é incluída no texto da Msg Pos compartilhada.
+  </Step>
+  <Step title="Toque em 'Continuar e autorizar localização'">
+    O app solicita a permissão nativa do navegador. Se você negar, o app ainda funciona, mas a captura automática de coordenadas no momento do envio usará a última posição válida armazenada ou uma coordenada de contingência.
+  </Step>
+</Steps>
+
+<Note>
+  A geolocalização automática não será incluída no texto da Msg Pos compartilhada. Ela será utilizada no sistema conforme o nível de acesso de cada usuário.
+</Note>
+
+{/* CAPTURA: tela-autorizacao-localizacao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela inicial de autorização de localização com o título "Uso da localização", texto explicativo e botão "Continuar e autorizar localização".
+</Callout>
+
+## Captura automática de coordenadas nas mensagens
+
+Quando você envia uma Msg Pos (normal ou final), o app tenta capturar automaticamente a localização do dispositivo via `navigator.geolocation.getCurrentPosition`. Esse processo ocorre em segundo plano e não altera o texto da mensagem.
+
+<AccordionGroup>
+  <Accordion title="Como funciona a captura automática">
+    <Steps>
+      <Step title="Tentativa de GPS">
+        O app solicita a posição atual do aparelho com alta precisão e aguarda até 15 segundos pela resposta.
+      </Step>
+      <Step title="Sucesso">
+        Se a posição for válida, o app registra latitude, longitude, precisão (em metros) e horário da captura.
+      </Step>
+      <Step title="Falha ou negação">
+        Se o GPS falhar ou o usuário negar a permissão, o app usa a última posição válida guardada no aparelho. Se não houver última posição, usa uma coordenada de contingência definida pelo sistema.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="O que acontece quando não há posição">
+    Quando nenhuma localização puder ser obtida, o sistema marca a mensagem com uma indicação especial (`POSIÇÃO NÃO INFORMADA`). No mapa operacional, essa missão aparece com um marcador com tonalidade avermelhada e o tooltip indica que o local não foi informado na Msg Pos.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  A captura automática depende de conexão com a internet e permissão de GPS. Em áreas sem sinal, o app pode recorrer à última posição conhecida ou à coordenada de contingência.
+</Warning>
+
+## Seletor de localização no formulário de Msg Pos
+
+O componente **Selecionar local no mapa** aparece em quatro pontos do formulário de Msg Pos:
+
+- **Local da Missão** (marcador padrão, com brasão da OMAvEx)
+- **Local de Pernoite de Anv e Trip** (marcador combinado)
+- **Local de Pernoite de Anv** (marcador de aeronave)
+- **Local de Pernoite Trip** (marcador de tripulação)
+
+### Como usar o seletor
+
+<Steps>
+  <Step title="Toque em 'Selecionar local no mapa'">
+    O mapa é exibido em um painel com altura de 300 px. O carregamento usa a biblioteca Leaflet com tiles do OpenStreetMap.
+  </Step>
+  <Step title="Toque no mapa ou arraste o pin">
+    Você pode tocar diretamente no mapa para posicionar o marcador, ou arrastá-lo até o ponto desejado. O marcador é arrastável apenas quando o campo não está desabilitado.
+  </Step>
+  <Step title="Confirme as coordenadas">
+    Quando o pin está posicionado, o app exibe a mensagem **Localização confirmada** com as coordenadas em formato decimal (ex.: `-23.550500, -46.633300`).
+  </Step>
+  <Step title="Feche o mapa">
+    Toque novamente em **Fechar mapa** para recolher o painel. As coordenadas permanecem registradas.
+  </Step>
+</Steps>
+
+### Coordenadas de referência automáticas
+
+O sistema tenta preencher automaticamente as coordenadas quando você digita o nome do local:
+
+| Tipo de referência | Exemplos | Comportamento |
+| --- | --- | --- |
+| OMAvEx | `1º BAVEX`, `2º BAVEX`, `3º BAVEX`, `4º BAVEX`, `DST AV EX`, `CIAVEX`, `BMS`, `CAVEX` | O pin é posicionado automaticamente nas coordenadas cadastradas da unidade. |
+| Aeródromo militar (ICAO) | `SBCG`, `SBMN`, `SBBE` | Aponta para a unidade militar correspondente. |
+| SBTA | `SBTA` | Aponta para a OMAvEx da aeronave (1º BAVEX, 2º BAVEX, CIAVEX ou BMS). |
+| Cidade brasileira | `Manaus-AM`, `Brasilia/DF` | O sistema consulta o cache local ou a API Nominatim (OpenStreetMap) para obter as coordenadas do centro da cidade. |
+
+<Note>
+  Quando o pin é posicionado automaticamente no centro da cidade, o app exibe o aviso **Localização aproximada** com o texto: "O pin foi posicionado automaticamente no centro da cidade informada. Para salvar as coordenadas, toque no mapa ou movimente o pin até a posição desejada."
+</Note>
+
+### Estados do seletor
+
+O seletor de localização apresenta diferentes estados visuais:
+
+| Estado | Indicador visual | Significado |
+| --- | --- | --- |
+| Localização aproximada | Faixa amarela com ícone de informação | Coordenadas de referência (cidade ou unidade) posicionadas automaticamente, ainda não confirmadas pelo usuário. |
+| Selecione a localização | Faixa cinza com ícone de mapa | Nenhuma coordenada disponível. Toque no mapa para selecionar. |
+| Localização confirmada | Faixa verde com ícone de verificação | Coordenadas manuais registradas para salvamento. |
+| Confira a localização | Faixa laranja com ícone de alerta | O texto do local foi alterado após a seleção manual. As coordenadas anteriores foram preservadas. Verifique se o pin corresponde ao novo local. |
+
+### Campos do seletor
+
+| Campo | Obrigatório | Regra/validação | Mensagem |
+| --- | --- | --- | --- |
+| Coordenadas de localização | Não | O pin é opcional. Se nenhum ponto for marcado, a localização automática do aparelho será registrada no momento da emissão da Msg Pos. | (informativo) |
+| Remover localização | Não | Botão com ícone X ao lado das coordenadas confirmadas. Limpa as coordenadas manuais. | Não se aplica |
+
+{/* CAPTURA: seletor-localizacao-mapa */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel do seletor de localização aberto, mostrando o mapa Leaflet com um pin posicionado, faixa de status "Localização confirmada" e coordenadas decimais exibidas abaixo.
+</Callout>
+
+### Tratamento de erros no seletor
+
+| Situação | Mensagem exibida | Ação sugerida |
+| --- | --- | --- |
+| Falha ao carregar o mapa | "Não foi possível carregar o mapa. Verifique sua conexão e tente novamente." | Toque em **Tentar carregar novamente**. |
+| Tiles do mapa não carregam | "Algumas imagens do mapa não carregaram. Verifique sua conexão e tente novamente." | Verifique a conexão com a internet e toque em **Tentar carregar novamente**. |
+| Leaflet indisponível | "Leaflet indisponível." | Recarregue a página ou verifique a conexão. |
+
+## Mapa operacional de missões
+
+O mapa operacional é exibido na tela **Administração** para os perfis de gestão. Ele mostra a distribuição geográfica das missões com base nas coordenadas das Msg Pos.
+
+### O que o mapa mostra
+
+O mapa exibe marcadores para missões que possuem ao menos uma das seguintes informações:
+
+- Coordenadas da aeronave (`aircraft_latitude`, `aircraft_longitude`)
+- Coordenadas da tripulação (`crew_latitude`, `crew_longitude`)
+- Coordenadas da base OMAvEx (para missões criadas ou canceladas que não possuem Msg Pos)
+
+<Info>
+  Missões encerradas aparecem no mapa apenas se tiverem coordenadas de aeronave ou tripulação. Missões criadas ou canceladas sem Msg Pos usam a coordenada da base OMAvEx.
+</Info>
+
+### Tipos de marcadores
+
+O mapa operacional usa diferentes ícones conforme o status e o tipo de localização:
+
+<CardGroup cols={2}>
+  <Card title="Missão em Andamento" icon="map-pin">
+    Marcador padrão com brasão da OMAvEx. Indica missão ativa que já possui pelo menos uma Msg Pos.
+  </Card>
+
+  <Card title="Missão Aberta" icon="map-pin">
+    Marcador específico para missão criada, ainda sem Msg Pos enviada. Posicionado na base OMAvEx.
+  </Card>
+
+  <Card title="Missão Encerrada" icon="map-pin">
+    Marcador específico para missão encerrada (Msg Pos Final). Mostra a última localização conhecida.
+  </Card>
+
+  <Card title="Missão Cancelada" icon="map-pin">
+    Marcador específico para missão cancelada. Posicionado na base OMAvEx.
+  </Card>
+
+  <Card title="Pernoite ANV" icon="plane">
+    Indica local de pernoite da aeronave, quando diferente do local da tripulação.
+  </Card>
+
+  <Card title="Pernoite TRIP" icon="users">
+    Indica local de pernoite da tripulação, quando diferente do local da aeronave.
+  </Card>
+
+  <Card title="Pernoite ANV + TRIP" icon="link">
+    Indica que aeronave e tripulação estão no mesmo local de pernoite.
+  </Card>
+
+  <Card title="Posição não informada" icon="alert-triangle">
+    Marcador com tonalidade avermelhada. Indica que a Msg Pos não continha coordenadas válidas.
+  </Card>
+</CardGroup>
+
+### Interações no mapa
+
+| Ação | Resultado |
+| --- | --- |
+| Clicar em um marcador | Abre os detalhes da missão correspondente. |
+| Clicar em um agrupamento (cluster) | Aproxima o zoom no ponto central do grupo. |
+| Zoom máximo em agrupamento | No zoom 16 ou superior, missões sobrepostas se separam em leque com linhas tracejadas indicando suas posições reais. |
+| Clicar em item da lista abaixo do mapa | Também abre os detalhes da missão. |
+| Botão **Legenda** | Abre painel modal explicando todos os tipos de marcadores. |
+
+<Note>
+  A lista abaixo do mapa permanece disponível para navegação por teclado e leitores de tela. Cada item mostra: número da aeronave (EXB-XXXX), nome da missão, órgão apoiado, local e um aviso de "POSIÇÃO NÃO INFORMADA" quando aplicável.
+</Note>
+
+{/* CAPTURA: mapa-operacional-com-marcadores */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** mapa operacional na tela Administração, mostrando múltiplos marcadores de missões em andamento, a legenda aberta e a lista de missões localizadas abaixo.
+</Callout>
+
+### Legenda do mapa
+
+Toque no botão **Legenda** no canto superior direito do mapa para abrir o painel modal. A legenda é dividida em duas seções:
+
+**Missões:**
+
+- Missão em Andamento
+- Missão Aberta
+- Missão Encerrada
+- Missão Cancelada
+
+**Locais de pernoite:**
+
+- Pernoite ANV
+- Pernoite TRIP
+- Pernoite ANV + TRIP
+
+A legenda também informa: "Indicação vermelha no marcador: posição não informada."
+
+{/* CAPTURA: legenda-mapa-operacional */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel modal da legenda do mapa, mostrando os ícones e rótulos de cada tipo de marcador.
+</Callout>
+
+### Agrupamento de marcadores
+
+Quando múltiplas missões estão próximas visualmente (menos de 125 pixels de distância), o mapa as agrupa em um único marcador circular com o número de missões e a sigla "ANV". Ao clicar no agrupamento, o zoom aumenta. No zoom máximo de separação (nível 16), os marcadores se dispersam em leque e uma linha tracejada cinza conecta cada um à sua posição real.
+
+<Tip>
+  O agrupamento preserva as coordenadas originais das mensagens. A separação em leque é apenas visual, para facilitar a interação quando várias missões ocupam o mesmo ponto.
+</Tip>
+
+### Quem vê o mapa operacional
+
+<Info>
+  O mapa operacional está disponível apenas na tela **Administração** e é visível para:
+
+  - Gestor Global
+  - Gestor CAvEx
+  - Gestor Local
+  - Administrador Local
+
+  O acesso à tela Administração exige conexão com a internet.
+</Info>
+
+Usuários comuns (perfil **Usuário**) não têm acesso ao mapa operacional. Eles podem, no entanto, usar o seletor de localização normalmente ao preencher suas Msg Pos.
+
+## Resumo das fontes de coordenadas
+
+| Fonte | Quando ocorre | Visível no texto compartilhado? |
+| --- | --- | --- |
+| GPS automático do dispositivo | No envio da Msg Pos | Não |
+| Coordenadas manuais no mapa | Quando o usuário posiciona o pin | Não |
+| Referência de cidade/unidade | Quando o sistema reconhece o texto do local | Não |
+| Última posição válida (cache) | Quando o GPS falha | Não |
+| Coordenada de contingência | Quando nenhuma outra fonte está disponível | Não |
+
+<Warning>
+  Nenhuma coordenada geográfica (latitude/longitude) é incluída no texto da Msg Pos compartilhada por WhatsApp, e-mail ou PDF. As coordenadas são usadas apenas internamente pelo sistema para o mapa operacional e relatórios de gestão.
+</Warning>

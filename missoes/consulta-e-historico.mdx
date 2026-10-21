@@ -1,0 +1,214 @@
+---
+title: "Consulta e histórico de missões"
+sidebarTitle: "Consulta e histórico"
+description: "Acesse missões encerradas e canceladas, aplique filtros, visualize detalhes, mensagens de posição e reabra missões quando necessário."
+keywords:
+  - "missões anteriores"
+  - "histórico"
+  - "canceladas"
+  - "reabrir"
+  - "relatório"
+---
+
+A tela **Missões Anteriores / Canceladas** reúne todo o histórico de missões que já foram encerradas ou canceladas. Você pode pesquisar, inspecionar detalhes, consultar mensagens de posição e, quando necessário, reabrir uma missão.
+
+<Info>
+  Esta funcionalidade está disponível para todos os perfis com acesso ao aplicativo.
+</Info>
+
+{/* CAPTURA: lista-missoes-anteriores */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** lista de missões anteriores e canceladas com campo de pesquisa e cards de missão.
+</Callout>
+
+## Acesso à tela de missões anteriores
+
+No menu principal, toque em **Missões Anteriores / Canceladas**. O aplicativo carrega a lista automaticamente.
+
+<Steps>
+  <Step title="Abrir a tela">
+    Toque em **Missões Anteriores / Canceladas** no menu.
+  </Step>
+  <Step title="Aguardar o carregamento">
+    O sistema busca missões com status "encerrada" (CLOSED) ou "cancelada" (CANCELLED).
+  </Step>
+  <Step title="Pesquisar (opcional)">
+    Use o campo de busca para filtrar por aeronave, operação, OMAvEx, OMA, modelo ou status.
+  </Step>
+</Steps>
+
+## Pesquisa e filtros
+
+O campo de pesquisa localiza missões em tempo real. Os termos são comparados com os seguintes campos:
+
+| Campo de busca | Exemplo |
+| --- | --- |
+| Número da aeronave (Anv) | EXB-1234 |
+| Nome da operação | Operação ABC |
+| OMAvEx | OMAvEx de apoio |
+| Ordem de missão (OMA) | ABC-2024-001 |
+| Modelo da aeronave | Modelo X |
+| Motivo do cancelamento | Motivo do cancelamento |
+| Status | "cancelada" ou "encerrada" |
+
+<Note>
+  A pesquisa não diferencia maiúsculas de minúsculas e aceita termos parciais.
+</Note>
+
+{/* CAPTURA: pesquisa-missoes-anteriores */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** campo de pesquisa ativo com resultados filtrados.
+</Callout>
+
+## Lista de missões
+
+Cada missão aparece como um card com as seguintes informações:
+
+- **EXB-**\[número\]: identificação da aeronave
+- Nome da operação (ou um traço, se não preenchido)
+- OMAvEx
+- Período: data de início até data de término
+- Para missões canceladas: selo **CANCELADA** em vermelho e o motivo do cancelamento (truncado se for muito longo)
+
+Toque em qualquer card para abrir os detalhes da missão.
+
+<Warning>
+  Se não houver missões encerradas ou canceladas, a tela exibe a mensagem: "Nenhuma missão anterior ou cancelada registrada. As missões encerradas e canceladas aparecerão aqui para consulta."
+</Warning>
+
+## Detalhes da missão encerrada
+
+Ao abrir uma missão encerrada, você vê a tela **Histórico da Missão** com as seguintes seções:
+
+### Cabeçalho da missão
+
+- **EXB-**\[número\]: aeronave
+- Nome da operação
+- Ordem de Missão
+- Cotas: se houver cotas vinculadas, exibe cada cota com nome, parte (ex.: P1) e a cadeia de ordens/alterações (OFRAGs)
+- Período: data de início até data de término
+
+### Mensagem de posição FINAL
+
+Se a missão possuir uma Mensagem de Posição com status **FINAL**, ela aparece destacada no topo com:
+
+- Data da mensagem
+- Horas de voo P1 e P2
+- Local
+
+Toque nela para visualizar a mensagem completa (incluindo anexos, se houver).
+
+### Mensagens de posição anteriores
+
+Abaixo da mensagem FINAL (se existir), listam-se as demais mensagens de posição em ordem cronológica decrescente. Cada mensagem exibe:
+
+- Data
+- Horas de voo P1 e P2
+- Local
+
+Toque em qualquer mensagem para abrir a visualização completa.
+
+<Warning>
+  Se a missão estiver encerrada mas não possuir uma Mensagem de Posição FINAL registrada, o sistema exibe um aviso amarelo: "Esta missão está encerrada, mas não possui uma Mensagem de Posição FINAL registrada."
+</Warning>
+
+{/* CAPTURA: detalhes-missao-encerrada */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de histórico de missão encerrada com mensagem FINAL e lista de mensagens anteriores.
+</Callout>
+
+## Relatório da missão
+
+Para missões encerradas que possuem uma Mensagem de Posição FINAL, o botão **Relatório da Missão** fica disponível. Toque nele para abrir o [Relatório Final de Missão](/missoes/relatorio-final).
+
+<Info>
+  O relatório só é acessível quando há uma mensagem FINAL vinculada à missão.
+</Info>
+
+## Detalhes da missão cancelada
+
+Ao abrir uma missão cancelada, a tela exibe o título **Missão Cancelada** com um selo vermelho **CANCELADA**.
+
+### Relatório de cancelamento
+
+Uma seção em destaque vermelho exibe:
+
+| Campo | Descrição |
+| --- | --- |
+| OMA | Ordem de missão |
+| OMAvEx | Unidade de apoio |
+| Anv | EXB-[número] |
+| Modelo | Modelo da aeronave |
+| HV Distribuída | Horas de voo distribuídas e tipo (P1 ou P2) |
+| Cota | Cota vinculada |
+| Missão | Nome da operação |
+| Órgão Apoiado | Organização apoiada |
+| Local | Local da missão |
+| Cancelada por | Trigrama do usuário que cancelou |
+| Data do cancelamento | Data e hora do cancelamento |
+| Motivo | Motivo detalhado do cancelamento |
+
+{/* CAPTURA: detalhes-missao-cancelada */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de missão cancelada com relatório de cancelamento.
+</Callout>
+
+## Reabrir uma missão
+
+Tanto missões encerradas quanto canceladas podem ser reabritas. O botão **Reabrir Missão** aparece na tela de detalhes.
+
+<Steps>
+  <Step title="Toque em Reabrir Missão">
+    O botão fica na tela de detalhes da missão encerrada ou cancelada.
+  </Step>
+  <Step title="Confirme o diálogo">
+    O sistema exibe uma mensagem de confirmação diferente conforme o status:
+
+    - **Cancelada**: "Reabrir missão? A missão [nome] voltará a ficar ativa e poderá receber Mensagens de Posição."
+    - **Encerrada**: "Deseja reabrir esta missão? A Mensagem de Posição FINAL será removida e a missão voltará a ficar ativa para permitir correções."
+  </Step>
+  <Step title="Aguarde a reabertura">
+    O sistema processa a reabertura e exibe: "Missão reaberta com sucesso. Ela voltou a ser a missão ativa."
+  </Step>
+</Steps>
+
+<Info>
+  A reabertura está disponível para todos os perfis com acesso ao aplicativo.
+</Info>
+
+<Warning>
+  Ao reabrir uma missão encerrada, a Mensagem de Posição FINAL é removida. Ao reabrir uma missão cancelada, ela volta ao status ativo sem alterar as mensagens anteriores.
+</Warning>
+
+{/* CAPTURA: botao-reabrir-missao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** botão Reabrir Missão e diálogo de confirmação.
+</Callout>
+
+## Visualizar mensagem de posição
+
+Ao tocar em qualquer mensagem de posição (FINAL ou anterior), o sistema abre a tela de visualização da mensagem em modo somente leitura. Você pode:
+
+- Ver todos os campos preenchidos
+- Visualizar anexos (imagens, documentos)
+- Retornar à tela anterior
+
+<Check>
+  A visualização de mensagens em modo somente leitura preserva todos os dados originais, incluindo anexos.
+</Check>
+
+## Mensagens de erro
+
+| Mensagem | Situação |
+| --- | --- |
+| "Erro ao carregar missões anteriores / canceladas." | Falha na comunicação com o servidor ao carregar a lista |
+| "Erro ao carregar as Mensagens de Posição." | Falha ao buscar mensagens de uma missão específica |
+| "Erro ao carregar a Mensagem de Posição." | Falha ao abrir uma mensagem individual |
+| "Não foi possível reabrir a missão." | Erro durante o processo de reabertura |
+| "Nenhuma missão encontrada para esta pesquisa." | O termo de busca não retornou resultados |
+| "Nenhuma Msg Pos encontrada." | A missão não possui mensagens de posição registradas |

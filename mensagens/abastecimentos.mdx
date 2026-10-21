@@ -1,0 +1,169 @@
+---
+title: "Abastecimentos e controle de combustível"
+sidebarTitle: "Abastecimentos"
+description: "Como registrar abastecimentos (BR e Outros), anexar CEPA, usar a opção Sem abastecimento e acompanhar o painel de combustível acumulado na missão."
+keywords:
+  - "abastecimento"
+  - "combustível"
+  - "CEPA"
+  - "QAV"
+  - "mensagem de posição"
+---
+
+Na tela de criação da mensagem de posição, a seção **Abastecimento** permite registrar o volume de combustível por tipo, anexar fotos da CEPA e indicar quando não houve abastecimento. Os dados alimentam o painel de combustível acumulado na página inicial e os totais do relatório final.
+
+<Info>
+  **Quem pode usar:** Usuário, Administrador Local, Gestor Local, Gestor CAvEx e Gestor Global (conforme permissões da missão).
+</Info>
+
+## Registrar abastecimento na mensagem de posição
+
+<Steps>
+  <Step title="Acesse a mensagem de posição">
+    Na [página inicial](/primeiros-passos/pagina-inicial), toque no botão **Nova Msg Pos** ou abra uma mensagem existente para edição.
+  </Step>
+  <Step title="Localize a seção Abastecimento">
+    Desça até o card **Abastecimento**. Você verá os campos **BR** e **Outros**, além da opção **Sem abastecimento**.
+  </Step>
+  <Step title="Informe os litros">
+    Toque no campo desejado e digite apenas números (até 5 dígitos). O app formata o valor como litros. Exemplo: digite `500` para 500 L.
+  </Step>
+  <Step title="Anexe a CEPA (quando houver abastecimento)">
+    Abaixo do campo de litros, use os botões **Câmera** ou **Galeria** para fotografar ou selecionar a CEPA. É possível anexar várias fotos. Veja mais em [Anexar CEPA](#anexar-cepa).
+  </Step>
+  <Step title="Envie ou salve a mensagem">
+    Continue preenchendo os demais campos obrigatórios e toque em **Enviar** ou **Salvar**.
+  </Step>
+</Steps>
+
+{/* CAPTURA: tela-msg-pos-abastecimento-preenchido */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção "Abastecimento" da mensagem de posição com os campos BR e Outros preenchidos e botões de CEPA visíveis.
+</Callout>
+
+## Campos de combustível
+
+| Campo | Obrigatório | Regra/validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **BR** | Não (exceto se não marcar "Sem abastecimento") | Apenas números, até 5 dígitos | "BR deve conter apenas números (até 5 dígitos)." |
+| **Outros** | Não | Apenas números, até 5 dígitos | "Outros deve conter apenas números (até 5 dígitos)." |
+
+O app aceita entrada vazia (interpretada como zero). Se nenhum valor positivo for informado e a opção **Sem abastecimento** não estiver marcada, o sistema exibe uma confirmação antes do envio.
+
+## Opção "Sem abastecimento"
+
+Quando a missão do dia não envolveu abastecimento, ative a opção **Sem abastecimento** no canto superior direito do card **Abastecimento**.
+
+<Steps>
+  <Step title="Ative a opção">
+    Toque no controle ao lado de **Sem abastecimento**. O campo fica com fundo vermelho e os campos BR e Outros são desabilitados.
+  </Step>
+  <Step title="Valores zerados automaticamente">
+    O app preenche os campos com `0` e limpa eventuais mensagens de erro de combustível.
+  </Step>
+  <Step title="Envie a mensagem">
+    O sistema envia os valores zerados sem exigir confirmação adicional.
+  </Step>
+</Steps>
+
+<Warning>
+  A opção **Sem abastecimento** fica desabilitada quando a missão é marcada como **Dia de folga**. Nesse caso, todos os campos de abastecimento são zerados automaticamente.
+</Warning>
+
+### Confirmação de ausência de abastecimento
+
+Se você tentar enviar a mensagem sem preencher litros e sem marcar **Sem abastecimento**, o app exibe o diálogo:
+
+> **Confirmar ausência de abastecimento** "Nenhum abastecimento foi registrado nesta mensagem de posição. Confirma que não houve abastecimento?"
+
+<Steps>
+  <Step title="Escolha uma ação">
+    - **Voltar e ajustar:** fecha o diálogo, rola até a seção Abastecimento e posiciona o cursor no campo BR para correção.
+    - **Confirmar:** marca automaticamente "Sem abastecimento", zera os valores e prossegue com o envio.
+  </Step>
+</Steps>
+
+{/* CAPTURA: dialogo-confirmar-sem-abastecimento */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** diálogo modal "Confirmar ausência de abastecimento" com os botões "Voltar e ajustar" e "Confirmar".
+</Callout>
+
+## Anexar CEPA
+
+A CEPA (Comprovante de Entrega de Produto de Aviação) é anexada por tipo de combustível. Para cada campo com abastecimento registrado, use os botões abaixo do campo:
+
+- **Câmera:** abre a câmera do dispositivo para fotografar a CEPA.
+- **Galeria:** permite selecionar uma ou mais fotos já existentes.
+
+<Steps>
+  <Step title="Toque em Câmera ou Galeria">
+    Escolha a origem da foto conforme a CEPA esteja em mãos ou no rolo do dispositivo.
+  </Step>
+  <Step title="Adicione mais fotos se necessário">
+    É possível anexar várias fotos para o mesmo tipo de combustível. As miniaturas aparecem em grade logo acixo dos botões.
+  </Step>
+  <Step title="Remova uma foto, se precisar">
+    Toque no ícone de lixeira no canto superior direito da miniatura para remover.
+  </Step>
+</Steps>
+
+<Note>
+  A CEPA é opcional no formulário, mas recomendada sempre que houver abastecimento. O app exibe a mensagem:
+
+  > "CEPA anexada com sucesso. A CEPA será anexada ao Relatório Final de Missão."
+</Note>
+
+### Limites e obrigatoriedade
+
+| Aspecto | Regra |
+| --- | --- |
+| Obrigatoriedade | Opcional (não bloqueia o envio) |
+| Quantidade | Várias fotos por tipo de combustível |
+| Tipo de arquivo | Apenas imagens (`image/*`) |
+| Destino | Anexada ao relatório final da missão |
+
+{/* CAPTURA: tela-cepa-anexada-com-miniaturas */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção de CEPA com múltiplas miniaturas de fotos anexadas e botões Câmera/Galeria visíveis.
+</Callout>
+
+## Painel de combustível acumulado
+
+Na [página inicial](/primeiros-passos/pagina-inicial), dentro do card da missão ativa, o painel **Combustível acumulado** exibe o total de litros já registrados em todas as mensagens de posição da missão.
+
+<CardGroup cols={2}>
+  <Card title="Total geral" icon="fuel">
+    Soma de BR, Outros e demais tipos em todas as mensagens da missão. Exibido em destaque: "1.234 L".
+  </Card>
+
+  <Card title="Detalhamento por tipo" icon="list">
+    Quando houver valores, o painel mostra cada tipo em linha separada: "BR: 800 L", "Outros: 434 L".
+  </Card>
+</CardGroup>
+
+Se nenhuma mensagem tiver abastecimento registrado, o painel exibe:
+
+> "Nenhum abastecimento registrado"
+
+{/* CAPTURA: painel-combustivel-acumulado-pagina-inicial */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** card da missão ativa na página inicial mostrando o painel "Combustível acumulado" com total e detalhamento por tipo.
+</Callout>
+
+## Totais no relatório final
+
+Os abastecimentos de todas as mensagens de posição são consolidados no [relatório final da missão](/missoes/relatorio-final). O relatório apresenta:
+
+- **Diário:** litros de cada tipo por dia (BR, Outros).
+- **Acumulado:** total acumulado até aquele dia.
+- **Totais gerais:** no rodapé do relatório, com a soma final de cada tipo e o total geral.
+
+As CEPAs anexadas são incorporadas ao PDF do relatório na seção de anexos, vinculadas ao dia correspondente.
+
+<Info>
+  O relatório final é gerado automaticamente a partir dos dados das mensagens de posição. Não é possível editar os volumes de combustível diretamente no relatório.
+</Info>

@@ -1,0 +1,171 @@
+---
+title: "Página inicial e navegação"
+sidebarTitle: "Página inicial"
+description: "Conheça a página inicial do MSG POS AVEX, o cabeçalho, identificação do usuário, menu de perfil e botões de navegação."
+keywords:
+  - "página inicial"
+  - "navegação"
+  - "home"
+  - "menu"
+  - "cabeçalho"
+---
+
+A página inicial do MSG POS AVEX é o ponto central de acesso a todas as funcionalidades do sistema. O cabeçalho exibe sua identificação e oferece acesso rápido ao perfil, suporte e saída. O corpo da página apresenta missões ativas, resumo operacional e botões de ação principais.
+
+{/* CAPTURA: pagina-inicial-cabecalho */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** cabeçalho da página inicial mostrando identificação do usuário, botão de suporte e botão de saída.
+</Callout>
+
+## Cabeçalho e identificação do usuário
+
+O cabeçalho é fixo na parte superior da tela e se compacta ao rolar a página. Ele contém:
+
+- **Título do sistema:** MSG POS AVEX.
+- **Botão Suporte:** ícone de fones de ouvido com acesso à Central de Ajuda e Contatos e Sugestões. Gestores Globais veem um contador de sugestões não lidas.
+- **Identificação do usuário:** foto de perfil padrão, trigrama, posto/graduação, nome de guerra, OMAvEx e aeronave atual. Gestores exibem o ícone e rótulo do perfil (Gestor Global, Gestor CAvEx, Gestor Local ou Administrador Local).
+- **Botão Sair:** ícone de log out para encerrar a sessão.
+
+Toque na área de identificação do usuário para abrir a tela **Meus Dados**.
+
+## Meus dados (perfil do usuário)
+
+A tela **Meus Dados** permite que você atualize suas informações pessoais e operacionais e altere sua senha.
+
+<Steps>
+  <Step title="Abra Meus Dados">
+    Toque na sua identificação no cabeçalho da página inicial.
+  </Step>
+  <Step title="Edite os campos desejados">
+    Altere os dados nos campos disponíveis. Os campos **Trigrama** e **Nome** são obrigatórios. Os campos **Trigrama** e **Aeronave Atual** são convertidos automaticamente para maiúsculas.
+  </Step>
+  <Step title="Salve as alterações">
+    Toque em **Salvar Alterações**. O sistema exibe a mensagem "Dados atualizados com sucesso."
+  </Step>
+</Steps>
+
+### Campos editáveis em Meus Dados
+
+| Campo | Obrigatório | Conversão automática |
+| --- | --- | --- |
+| **Posto/Graduação** | Não |  |
+| **Arma/Quadro/Serviço** | Não |  |
+| **Trigrama** | Sim | Maiúsculas |
+| **Nome** | Sim |  |
+| **Nome de Guerra** | Não |  |
+| **Função de Bordo** | Não |  |
+| **Especialidade Aviação** | Não |  |
+| **Aeronave Atual** | Não | Maiúsculas |
+| **Situação/Vínculo** | Não |  |
+| **OM Classificação** | Não |  |
+| **OM à Disposição** | Não |  |
+| **OMAvEx** | Não |  |
+
+### Alterar senha
+
+Dentro de **Meus Dados**, toque em **Alterar senha** para acessar a tela de troca de senha.
+
+| Campo | Obrigatório | Regra/validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **Senha atual** | Sim |  | "Informe a senha atual." |
+| **Nova senha** | Sim | Mínimo 6 caracteres, diferente da atual | "A nova senha deve possuir pelo menos 6 caracteres." / "A nova senha deve ser diferente da senha atual." |
+| **Confirmar nova senha** | Sim | Deve coincidir com a nova senha | "As senhas não coincidem." |
+
+Após a alteração, o sistema exibe "Senha alterada com sucesso."
+
+{/* CAPTURA: tela-meus-dados */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela Meus Dados com formulário de dados pessoais e botão "Alterar senha".
+</Callout>
+
+## Seções da página inicial
+
+### Missões ativas
+
+Quando há mais de uma missão ativa, a página exibe uma lista de cartões com o nome da operação, número da aeronave e OMAvEx. Toque em uma missão para selecioná-la. A missão selecionada é destacada com o selo **Selecionada**.
+
+### Missão ativa (painel operacional)
+
+Se houver uma missão ativa selecionada, o painel exibe:
+
+- **Identificação:** nome da operação, OMAvEx e matrícula formatada da aeronave (EXB-XXXX).
+- **Imagem da aeronave:** silhueta ou imagem do modelo identificado automaticamente pelo prefixo numérico.
+- **Localização e órgão apoiado:** local da missão e organização suportada.
+- **Empregado:** resumo de horas de voo P1 (partida ao corte) e P2 (voo), potencial de manutenção e dias em missão.
+- **Disponibilidade:** horas restantes por cota, quando aplicável.
+- **Combustível:** total acumulado de abastecimentos na missão, detalhado por tipo (BR e Outros).
+
+Para mais detalhes sobre horas de voo e cotas, consulte [Horas de voo P1/P2 e controle de cotas](/mensagens/horas-de-voo-e-cotas). Para abastecimentos, consulte [Abastecimentos e controle de combustível](/mensagens/abastecimentos).
+
+{/* CAPTURA: painel-missao-ativa */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel da missão ativa com indicadores de empregado, disponibilidade e combustível.
+</Callout>
+
+## Botões de ação principais
+
+| Botão | Destino | Descrição |
+| --- | --- | --- |
+| **Mensagem de Posição** | Tela de Msg Pos | Abre a missão ativa para registro ou edição de Mensagens de Posição. |
+| **Iniciar Missão** | Tela de cadastro de missão | Inicia o fluxo para registrar uma nova missão de aeronave. |
+| **Missões Anteriores** | Tela de consulta | Consulta missões encerradas e relatórios. |
+
+## Botões de gestão (perfis de gestão)
+
+Usuários com perfis de gestão visualizam botões adicionais na página inicial:
+
+| Botão | Perfil necessário | Destino | Descrição |
+| --- | --- | --- | --- |
+| **Gestão de Missões** | Gestor Global, Gestor CAvEx, Gestor Local ou Administrador Local | Administração, seção Missões | Acompanhar missões e situação operacional. |
+| **Gestão de Pessoal** | Gestor Global ou Administrador Local | Administração, seção Pessoal | Usuários, perfis e permissões administrativas. |
+
+<Info>
+  A administração requer conexão com a internet. Se você tentar acessar offline, o sistema exibe a mensagem "A administração requer conexão com a internet."
+</Info>
+
+## Suporte
+
+Toque no ícone de fones de ouvido no cabeçalho para abrir o painel de suporte, com duas abas:
+
+- **Central de Ajuda:** manual e orientações de uso.
+- **Contatos e Sugestões:** lista de gestores responsáveis pelo sistema com telefone e e-mail (quando informados), além de campo para enviar sugestões de melhoria.
+
+<Note>
+  Gestores Globais visualizam uma caixa de sugestões recebidas e um contador de mensagens não lidas no ícone de suporte.
+</Note>
+
+{/* CAPTURA: painel-suporte-abas */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** painel de suporte com abas "Central de Ajuda" e "Contatos e Sugestões".
+</Callout>
+
+## Mapa de navegação
+
+A tabela a seguir resume os principais fluxos de navegação a partir da página inicial, com base no código de controle de telas (App.tsx).
+
+| De onde | Botão/ação | Tela destino |
+| --- | --- | --- |
+| Página inicial | **Mensagem de Posição** (painel Missão Ativa) | Tela de Msg Pos da missão selecionada |
+| Página inicial | **Iniciar Missão** | Tela de cadastro de nova missão |
+| Página inicial | **Missões Anteriores** | Tela de consulta de missões |
+| Página inicial | Identificação do usuário (cabeçalho) | Meus Dados |
+| Página inicial | Ícone Suporte | Painel Central de Ajuda / Contatos e Sugestões |
+| Página inicial | Ícone Sair | Tela de login (logout) |
+| Página inicial | **Gestão de Missões** (gestores) | Administração, seção Missões |
+| Página inicial | **Gestão de Pessoal** (gestores) | Administração, seção Pessoal |
+| Tela de Msg Pos | Botão editar (dentro da Msg Pos) | Edição de missão |
+| Tela de Msg Pos | Encerrar missão | Página inicial (após confirmação) |
+| Edição de missão | Cancelar missão | Pré-visualização de cancelamento |
+| Pré-visualização de cancelamento | Voltar | Página inicial |
+| Administração | Voltar | Página inicial |
+| Meus Dados | Voltar | Página inicial |
+| Cadastro de missão | Voltar | Página inicial |
+| Consulta de missões | Voltar | Página inicial |
+
+<Note>
+  O MSG POS AVEX não utiliza rotas de URL. A navegação ocorre por meio de estados internos do aplicativo. O botão Voltar do navegador pode não funcionar como esperado; prefira os botões de voltar dentro do aplicativo.
+</Note>

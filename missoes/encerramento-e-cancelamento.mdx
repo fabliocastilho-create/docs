@@ -1,0 +1,194 @@
+---
+title: "Encerramento e cancelamento de missões"
+sidebarTitle: "Encerramento e cancelamento"
+description: "Como encerrar uma missão com Mensagem de Posição FINAL e como cancelar uma missão ativa sem mensagens registradas."
+keywords:
+  - "encerramento"
+  - "cancelamento"
+  - "missão"
+  - "Msg Pos FINAL"
+  - "reabertura"
+---
+
+Você pode encerrar uma missão ativa após registrar todas as Mensagens de Posição diárias, ou cancelá-la antes que qualquer mensagem seja enviada. Ambas as ações movem a missão para a área de Missões Anteriores, com status diferente.
+
+## Encerramento de missão
+
+O encerramento ocorre quando você registra a **Mensagem de Posição FINAL** da missão. A partir desse momento, a missão deixa de ser ativa e passa para Missões Anteriores, onde pode ser consultada e seu relatório final pode ser gerado.
+
+<Info>
+  **Quem pode encerrar:** qualquer usuário autorizado na missão (usuário vinculado ou gestor da mesma unidade/OMAvEx). O Gestor Global pode encerrar qualquer missão.
+</Info>
+
+### Condições para o encerramento
+
+A missão só pode ser encerrada se todas as condições abaixo forem atendidas:
+
+| Condição | Regra | Mensagem exibida |
+| --- | --- | --- |
+| Conexão com a internet | Obrigatória | "O encerramento da missão precisa de conexão com a internet. As Msg Pos normais podem continuar sendo salvas offline." |
+| Missão ativa | Somente missões com status ACTIVE podem ser encerradas | "Somente uma missão ativa pode ser encerrada." |
+| Mensagens normais preenchidas | Deve existir pelo menos uma Msg Pos normal antes da FINAL | "É necessário registrar pelo menos uma Mensagem de Posição antes de encerrar a missão." |
+| Data de encerramento | Não pode ser futura nem anterior ao início da missão | "Não é permitido encerrar a missão em data futura." / "A data de encerramento não pode ser anterior ao início da missão." |
+| Continuidade de datas | Todas as datas entre o início e a FINAL devem ter Msg Pos | "Não é possível encerrar a missão nesta data. Faltam as seguintes Msg Pos anteriores ao encerramento: [datas]." |
+| Data sem mensagem normal | A data da FINAL não pode ter uma Msg Pos normal já registrada | "Já existe uma Mensagem de Posição nesta data. Use essa mensagem como Msg Pos FINAL." |
+| Mensagem posterior | Não pode haver Msg Pos normal com data posterior à FINAL | "Existe uma Mensagem de Posição posterior à data escolhida para encerramento: [data]." |
+| P2 maior que P1 | A hora de voo P2 não pode ser maior que P1 | "P2 não pode ser maior que P1." |
+
+{/* CAPTURA: tela-msg-pos-final */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de preenchimento da Mensagem de Posição FINAL, com o aviso "Encerramento da Missão" no topo e os campos de data, missão realizada, horas P1/P2, local e anexos.
+</Callout>
+
+### Como encerrar uma missão
+
+<Steps>
+  <Step title="Acesse a tela de Msg Pos da missão ativa">
+    Na página inicial, selecione a missão ativa e toque em **Mensagem de Posição**.
+  </Step>
+  <Step title="Inicie a Msg Pos FINAL">
+    Toque no botão de encerramento (ícone de cadeado/fechamento). O aplicativo abre o formulário com título **"Mensagem de Posição FINAL"**.
+  </Step>
+  <Step title="Confira a data">
+    O aplicativo sugere a primeira data pendente ou a data atual. Se houver uma Msg Pos normal na mesma data, o sistema exibe uma confirmação para usar essa mensagem como FINAL (funcionalidade temporariamente desabilitada no servidor; crie uma nova Msg Pos FINAL).
+  </Step>
+  <Step title="Preencha os campos obrigatórios">
+    Informe **Missão Realizada no Dia**, **P1**, **P2**, **Local** e os demais campos. O campo **Missão do Dia Seguinte** não é exibido na Msg Pos FINAL, pois a missão está sendo encerrada.
+  </Step>
+  <Step title="Visualize a prévia">
+    Após o preenchimento, toque em enviar. O aplicativo exibe a **Prévia da Mensagem de Posição FINAL** com todos os dados e anexos.
+  </Step>
+  <Step title="Confirme o encerramento">
+    Na prévia, toque em **Confirmar e Encerrar Missão**. O sistema envia a mensagem, encerra a missão e exibe a tela de confirmação.
+  </Step>
+</Steps>
+
+### Após o encerramento
+
+Quando a missão é encerrada com sucesso:
+
+- A missão some da lista de Missões Ativas.
+- A missão aparece em **Missões Anteriores** com status encerrada.
+- O aplicativo exibe a prévia da Msg Pos FINAL com botões para:
+  - **Relatório Final da Missão** (abre a tela de relatório).
+  - **Voltar** (retorna à prévia).
+  - **Home** (volta para a página inicial).
+
+Para gerar o relatório final completo, consulte a página [Relatório Final de Missão](/missoes/relatorio-final).
+
+{/* CAPTURA: tela-pos-encerrada-sucesso */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela exibida imediatamente após o encerramento, com a prévia da Msg Pos FINAL e os botões "Relatório Final da Missão", "Voltar" e "Home".
+</Callout>
+
+### Reabertura de missão encerrada
+
+Missões encerradas ou canceladas podem ser reabertas a partir da tela de consulta de Missões Anteriores. Ao reabrir uma missão encerrada, a Msg Pos FINAL é removida e a missão volta ao status ativo.
+
+<Warning>
+  Você não pode reabrir uma missão se já estiver vinculado a outra missão ativa. Encerre ou cancele a missão atual primeiro.
+</Warning>
+
+A reabertura exibe a confirmação: "Deseja reabrir esta missão? A Mensagem de Posição FINAL será removida e a missão voltará a ficar ativa para permitir correções."
+
+{/* CONFIRMAR: a reabertura está disponível na interface de Consulta de Missões, mas verifique se o botão é visível para todos os perfis autorizados ou apenas gestores */}
+
+## Cancelamento de missão
+
+O cancelamento remove a missão do status ativo antes que qualquer Mensagem de Posição seja registrada. A missão é mantida no histórico como **CANCELADA**.
+
+<Info>
+  **Quem pode cancelar:** qualquer usuário autorizado na missão (usuário vinculado ou gestor da mesma unidade/OMAvEx). O Gestor Global pode cancelar qualquer missão.
+</Info>
+
+### Condições para o cancelamento
+
+| Condição | Regra | Mensagem exibida |
+| --- | --- | --- |
+| Conexão com a internet | Obrigatória | "O cancelamento da missão precisa de conexão com a internet." |
+| Missão ativa | Somente missões com status ACTIVE podem ser canceladas | "Somente uma missão ativa pode ser cancelada." / "Esta missão já foi cancelada." |
+| Sem Mensagens de Posição | A missão não pode ter nenhuma Msg Pos registrada | "Esta missão já possui Mensagem de Posição e não pode ser cancelada." |
+| Motivo do cancelamento | Obrigatório, máximo 1000 caracteres | "Informe o motivo do cancelamento da missão." / "O motivo do cancelamento deve ter no máximo 1000 caracteres." |
+
+### Como cancelar uma missão
+
+<Steps>
+  <Step title="Acesse a tela Editar Missão">
+    Na tela de Msg Pos da missão ativa, toque em **Editar missão** (ícone de engrenagem no cabeçalho).
+  </Step>
+  <Step title="Abra a seção de cancelamento">
+    Role até o final da página até a seção **"Cancelamento da missão"**. Se a missão não tiver Msg Pos, o botão estará habilitado.
+  </Step>
+  <Step title="Toque em Cancelar missão">
+    O aplicativo exibe um diálogo com título **"Cancelar missão [nome da missão]"**.
+  </Step>
+  <Step title="Informe o motivo">
+    Preencha o campo **Motivo do cancelamento** (obrigatório, até 1000 caracteres). Um contador mostra "X/1000".
+  </Step>
+  <Step title="Confirme">
+    Toque em **Confirmar cancelamento**. O sistema processa o cancelamento e exibe a tela de Mensagem de Cancelamento.
+  </Step>
+</Steps>
+
+{/* CAPTURA: tela-cancelar-missao-dialogo */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** diálogo de cancelamento de missão com campo "Motivo do cancelamento", contador de caracteres e botões "Voltar" e "Confirmar cancelamento".
+</Callout>
+
+### Mensagem de cancelamento
+
+Após o cancelamento, o aplicativo exibe a tela **"Mensagem de Cancelamento"** com o texto formatado automaticamente, contendo:
+
+- Identificação da aeronave (EXB-XXXX)
+- OMAvEx, nome da operação, OMA, matrícula
+- Comandante da missão e telefone de contato
+- Período previsto
+- Motivo do cancelamento
+- Data do cancelamento
+- Trigrama do usuário que cancelou
+
+Você pode compartilhar essa mensagem por:
+
+| Ação | Descrição |
+| --- | --- |
+| **Copiar Mensagem** | Copia o texto para a área de transferência |
+| **WhatsApp** | Abre o WhatsApp com o texto pré-preenchido |
+| **SMS** | Abre o aplicativo de SMS com o texto |
+| **Gerar PDF** | Gera um arquivo PDF com o texto formatado |
+| **Compartilhar** | Usa o compartilhamento nativo do dispositivo |
+
+{/* CAPTURA: tela-mensagem-cancelamento */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela de Mensagem de Cancelamento com o texto gerado e os botões de compartilhamento (Copiar, WhatsApp, SMS, PDF, Compartilhar).
+</Callout>
+
+### Após o cancelamento
+
+- A missão some da lista de Missões Ativas.
+- A missão aparece em **Missões Anteriores / Canceladas** com a etiqueta **CANCELADA**.
+- O relatório de cancelamento exibe: OMA, OMAvEx, aeronave, modelo, HV Distribuída, cota, missão, órgão apoiado, local, quem cancelou, data do cancelamento e motivo.
+- A vaga da OMA **não** é liberada automaticamente (a missão cancelada mantém a vinculação com a ordem de missão e a aeronave).
+
+## Comparação: encerramento versus cancelamento
+
+| Aspecto | Encerramento | Cancelamento |
+| --- | --- | --- |
+| **Quando usar** | Missão concluída, todas as Msg Pos diárias registradas | Missão não iniciada ou sem Msg Pos registrada |
+| **Conexão com internet** | Obrigatória | Obrigatória |
+| **Mensagens de Posição** | Pelo menos uma Msg Pos normal + Msg Pos FINAL | Nenhuma Msg Pos pode existir |
+| **Status após ação** | CLOSED (Encerrada) | CANCELLED (Cancelada) |
+| **Disponibilidade da aeronave** | Liberada para nova missão | Não liberada (vaga da OMA mantida) |
+| **Relatório disponível** | Relatório Final de Missão | Relatório de Cancelamento |
+| **Reabertura possível** | Sim, remove a Msg Pos FINAL | Sim, volta ao status ativo |
+| **Campos obrigatórios** | Todos os campos da Msg Pos FINAL | Motivo do cancelamento (texto) |
+| **Quem pode executar** | Usuário vinculado ou gestor da mesma unidade | Usuário vinculado ou gestor da mesma unidade |
+
+{/* CAPTURA: tabela-comparativa-encerramento-cancelamento */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** visão geral da tela de Missões Anteriores / Canceladas mostrando uma missão encerrada e outra cancelada, com as etiquetas de status.
+</Callout>

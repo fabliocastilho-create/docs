@@ -1,0 +1,228 @@
+---
+title: "Cadastro e edição de informações da missão"
+sidebarTitle: "Cadastro e edição"
+description: "Preencha todos os campos do formulário de missão, entenda as validações e saiba como editar ou cancelar uma missão existente."
+keywords:
+  - "missão"
+  - "formulário"
+  - "Anv"
+  - "OMAvEx"
+  - "TSN"
+  - "tripulação"
+  - "validação"
+  - "edição"
+  - "cancelamento"
+---
+
+Use este formulário para registrar uma nova missão ou atualizar os dados de uma missão ativa. Todos os campos obrigatórios devem estar preenchidos corretamente antes do envio.
+
+## Dados da missão
+
+Esta seção reúne as informações operacionais básicas da missão.
+
+<CardGroup cols={2}>
+  <Card title="Anv" icon="plane">
+    Número da aeronave. Aceita apenas dígitos, com no máximo 4 caracteres. Exemplo: **1234**.
+  </Card>
+
+  <Card title="OMAvEx" icon="building">
+    Selecione a OMAvEx na lista: **1º BAvEx**, **2º BAvEx**, **3º BAvEx**, **4º BAvEx**, **DstAvEx**, **CIAvEx**, **BMS** ou **CAvEx**.
+  </Card>
+
+  <Card title="Nome Operação" icon="tag">
+    Nome da operação. Exemplo: **OPERAÇÃO ÁGUIA**.
+  </Card>
+
+  <Card title="Ordem de Missão" icon="file-text">
+    Ordem de referência da missão. Exemplo: **OM Nº 001/2026**. O campo aceita múltiplas ordens vinculadas.
+  </Card>
+</CardGroup>
+
+### Ordem de referência e busca de alterações
+
+O formulário permite vincular ordens de alteração (OFRAG) à missão. Clique em **Buscar Ordem** para consultar a relação atualizada e selecionar a ordem desejada. Os dados iniciais são preenchidos automaticamente, mas todos os campos continuam editáveis.
+
+{/* CAPTURA: formulario-buscar-ordem */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** botão **Buscar Ordem** na seção de dados da missão, com o modal de busca de alterações aberto.
+</Callout>
+
+### HV Distribuída e cota
+
+Preencha a **HV Distribuída** com um valor decimal (exemplo: **10.5**) e selecione a parte correspondente: **P1** ou **P2**.
+
+A **Cota** pode ser **COTer**, **CAvEx**, **CAvEx Hipotecado**, **Interna** ou **Outra**. Se selecionar **Outra**, digite o nome da cota manualmente.
+
+<Info>
+  Quando a missão possui mais de uma cota, marque a opção **Mais de uma cota**. Para cada cota adicional, informe a ordem de referência, a identificação da cota, a HV distribuída, a parte (P1/P2) e as datas de início e término da vigência.
+</Info>
+
+Para detalhes sobre cotas e OFRAG, consulte [Horas de voo e cotas](/mensagens/horas-de-voo-e-cotas).
+
+### Órgão apoiado, local e período
+
+| Campo | Obrigatório | Regra | Mensagem de erro |
+| --- | --- | --- | --- |
+| **Órgão Apoiado** | Não | Texto livre | - |
+| **Local** | Não | Texto livre | - |
+| **Data Início** | Sim | Data válida | "Data Início é obrigatória." |
+| **Data Término** | Sim | Não pode ser anterior à Data Início | "Data Término é obrigatória." / "Data Término não pode ser anterior à Data Início." |
+
+### Comandante e contato
+
+| Campo | Obrigatório | Regra |
+| --- | --- | --- |
+| **Cmt Missão Aérea** | Não | Nome do comandante |
+| **Ctt Cmt Mis Ae** | Não | Telefone celular brasileiro, formatado automaticamente |
+
+{/* CAPTURA: formulario-dados-missao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção **Dados da missão** do formulário, com todos os campos preenchidos de exemplo.
+</Callout>
+
+## Tripulação
+
+Cadastre os militares autorizados a acessar e alterar os dados da missão.
+
+<Steps>
+  <Step title="Digite o trigrama">
+    No campo **Adicionar Militar (Trigrama)**, digite os 3 caracteres do trigrama. Exemplo: **ABC**.
+  </Step>
+  <Step title="Adicione o militar">
+    Clique no botão de adição ou pressione **Enter**. O sistema valida se o usuário está ativo na base da OMAvEx selecionada.
+  </Step>
+  <Step title="Remova se necessário">
+    Para remover um militar da tripulação, clique no ícone **X** ao lado do trigrama exibido.
+  </Step>
+</Steps>
+
+<Note>
+  O usuário que iniciar a missão é autorizado automaticamente e não precisa ser adicionado manualmente.
+</Note>
+
+{/* CAPTURA: formulario-tripulacao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção **Tripulação** com trigramas adicionados em formato de tag.
+</Callout>
+
+## Manutenção
+
+Esta seção registra os dados técnicos da aeronave no início da missão.
+
+### TSN Célula
+
+Campo obrigatório. Aceita valores numéricos decimais. Exemplo: **0.0**.
+
+### TSN Motores (GTM)
+
+O formulário oferece duas modalidades:
+
+<Tabs>
+  <Tab title="GTM 1 = GTM 2">
+    Ative a opção **GTM 1 = GTM 2** quando ambos os motores possuem o mesmo TSN. Preencha apenas o campo **TSN GTM**.
+  </Tab>
+  <Tab title="GTM diferentes">
+    Desative a opção para informar valores distintos nos campos **TSN GTM 1** e **TSN GTM 2**.
+  </Tab>
+</Tabs>
+
+### Potencial de Manutenção
+
+Campo obrigatório. Aceita valores numéricos decimais. Exemplo: **0.0**.
+
+{/* CAPTURA: formulario-manutencao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** seção **Manutenção** com campos TSN Célula, GTM e Potencial de Manutenção.
+</Callout>
+
+## Tabela de validações
+
+O sistema valida os campos obrigatórios antes de salvar a missão.
+
+| Campo | Obrigatório | Regra de validação | Mensagem de erro |
+| --- | --- | --- | --- |
+| **Anv** | Sim | Apenas números, máximo 4 dígitos | "Anv é obrigatório." / "Anv deve conter apenas números (máximo 4 dígitos)." |
+| **HV Distribuída** | Sim | Valor decimal (ex: 10.5) | "HV Distribuída é obrigatória." / "HV Distribuída deve ser um valor decimal (ex: 10.5)." |
+| **P1/P2** | Sim | Seleção obrigatória | "Selecione P1 ou P2." |
+| **Data Início** | Sim | Data válida | "Data Início é obrigatória." |
+| **Data Término** | Sim | Não anterior à Data Início | "Data Término é obrigatória." / "Data Término não pode ser anterior à Data Início." |
+| **TSN Célula** | Sim | Valor numérico decimal | "TSN Célula é obrigatória." / "TSN Célula deve ser um valor numérico decimal." |
+| **TSN GTM** (quando GTM iguais) | Sim | Valor numérico decimal | "TSN GTM é obrigatória." / "TSN GTM deve ser um valor numérico decimal." |
+| **TSN GTM 1** (quando GTM diferentes) | Sim | Valor numérico decimal | "TSN GTM 1 é obrigatória." / "TSN GTM 1 deve ser um valor numérico decimal." |
+| **TSN GTM 2** (quando GTM diferentes) | Sim | Valor numérico decimal | "TSN GTM 2 é obrigatória." / "TSN GTM 2 deve ser um valor numérico decimal." |
+| **Potencial de Manutenção** | Sim | Valor numérico decimal | "Potencial de Manutenção é obrigatório." / "Potencial de Manutenção deve ser um valor numérico decimal." |
+
+<Warning>
+  Se houver erros de validação, o formulário exibe um resumo dos campos pendentes e não permite o envio até que todas as regras sejam atendidas.
+</Warning>
+
+## Botões do formulário
+
+| Botão | Função |
+| --- | --- |
+| **Iniciar Missão** / **Salvar Alterações** | Envia o formulário. Durante o envio, o botão fica desabilitado e exibe "Salvando...". |
+| **Cancelar Alterações** | Descarta as alterações e retorna à tela anterior. Aparece apenas na edição. |
+| **Apagar Dados** | Limpa todos os campos do formulário. Aparece apenas no cadastro de nova missão. |
+
+<Info>
+  Durante o salvamento, a mensagem "Salvando dados da missão..." é exibida na tela.
+</Info>
+
+## Editar uma missão existente
+
+Para alterar os dados de uma missão ativa, acesse a tela **Editar Missão**.
+
+<Steps>
+  <Step title="Acesse a missão">
+    Na página inicial ou em [Missões Ativas](/missoes/criacao-e-gerenciamento), selecione a missão desejada.
+  </Step>
+  <Step title="Abra a edição">
+    Clique na opção de edição para abrir o formulário preenchido com os dados atuais da missão.
+  </Step>
+  <Step title="Altere os campos permitidos">
+    Edite os campos necessários. Alguns campos ficam bloqueados quando a missão já possui Mensagens de Posição registradas.
+  </Step>
+  <Step title="Salve as alterações">
+    Clique em **Salvar Alterações**. O sistema exibe "Atualizando dados da missão..." durante o processamento.
+  </Step>
+</Steps>
+
+### Campos bloqueados após Mensagens de Posição
+
+Quando a missão já possui Mensagens de Posição, determinados campos ficam desabilitados para preservar a integridade dos dados registrados. O sistema indica visualmente quais campos não podem mais ser alterados.
+
+<Warning>
+  A edição de missão exige conexão com a internet para sincronização dos dados alterados.
+</Warning>
+
+{/* CAPTURA: tela-editar-missao */}
+
+<Callout icon="camera" color="#6B7280">
+  **Captura de tela pendente:** tela **Editar Missão** com o cabeçalho indicando a missão em edição e campos bloqueados.
+</Callout>
+
+## Cancelamento da missão
+
+A tela **Editar Missão** também permite o cancelamento da missão, desde que ela ainda não possua Mensagens de Posição registradas.
+
+<Steps>
+  <Step title="Verifique a elegibilidade">
+    A seção **Cancelamento da missão** informa se a missão pode ser cancelada. Se já houver Mensagens de Posição, o cancelamento não é permitido.
+  </Step>
+  <Step title="Informe o motivo">
+    Clique em **Cancelar missão** e preencha o campo obrigatório **Motivo do cancelamento**, com no máximo 1000 caracteres.
+  </Step>
+  <Step title="Confirme">
+    Clique em **Confirmar cancelamento**. A missão será movida para **Missões Anteriores / Canceladas**.
+  </Step>
+</Steps>
+
+<Warning>
+  O cancelamento exige conexão com a internet. O registro cancelado é mantido no histórico com status CANCELADA.
+</Warning>
+
+Para mais detalhes sobre encerramento e cancelamento, consulte [Encerramento e cancelamento](/missoes/encerramento-e-cancelamento).
